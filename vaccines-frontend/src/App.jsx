@@ -1,26 +1,39 @@
-import React, { useState, useEffect } from "react";
-import Vaccine from "./Vaccine";
-import vaccineService from "./services/vaccine";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import About from "./components/About";
+import VaccineList from "./components/VaccineList";
+import Info from "./components/Info";
 
 const App = () => {
-  const [vaccines, setVaccines] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const initialVaccines = await vaccineService.getAll();
-      setVaccines(initialVaccines);
-    };
-    fetchData();
-  }, []);
-
   return (
-    <div>
+    <Router>
       <div>
-        {vaccines.map((vaccine) => (
-          <Vaccine key={vaccine.id} vaccine={vaccine} />
-        ))}
+        <nav>
+          <div style={{ display: "flex", gap: "15px" }}>
+            <p>
+              <Link to="/">Home</Link>
+            </p>
+            <p>
+              <Link to="/vaccinelist">Vaccine List</Link>
+            </p>
+            <p>
+              <Link to="/about">About</Link>
+            </p>
+          </div>
+        </nav>
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/vaccinelist">
+            <VaccineList />
+          </Route>
+          <Route path="/">
+            <Info />
+          </Route>
+        </Switch>
       </div>
-    </div>
+    </Router>
   );
 };
 
