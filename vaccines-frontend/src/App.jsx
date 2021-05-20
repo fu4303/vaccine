@@ -19,6 +19,81 @@ const App = () => {
     fetchData();
   }, []);
 
+  const data = [
+    {
+      name: "January",
+      SolarBhuddica: `${
+        vaccines
+          .filter((vaccine) => vaccine.vaccine === "SolarBuddhica")
+          .filter((vaccine) => vaccine.arrived.includes("2021-01")).length
+      }`,
+      Antiqua: `${
+        vaccines
+          .filter((vaccine) => vaccine.vaccine === "Antiqua")
+          .filter((vaccine) => vaccine.arrived.includes("2021-01")).length
+      }`,
+      Zerphy: `${
+        vaccines
+          .filter((vaccine) => vaccine.vaccine === "Zerpfy")
+          .filter((vaccine) => vaccine.arrived.includes("2021-01")).length
+      }`,
+    },
+    {
+      name: "February",
+      SolarBhuddica: `${
+        vaccines
+          .filter((vaccine) => vaccine.vaccine === "SolarBuddhica")
+          .filter((vaccine) => vaccine.arrived.includes("2021-02")).length
+      }`,
+      Antiqua: `${
+        vaccines
+          .filter((vaccine) => vaccine.vaccine === "Antiqua")
+          .filter((vaccine) => vaccine.arrived.includes("2021-02")).length
+      }`,
+      Zerphy: `${
+        vaccines
+          .filter((vaccine) => vaccine.vaccine === "Zerpfy")
+          .filter((vaccine) => vaccine.arrived.includes("2021-02")).length
+      }`,
+    },
+    {
+      name: "March",
+      SolarBhuddica: `${
+        vaccines
+          .filter((vaccine) => vaccine.vaccine === "SolarBuddhica")
+          .filter((vaccine) => vaccine.arrived.includes("2021-03")).length
+      }`,
+      Antiqua: `${
+        vaccines
+          .filter((vaccine) => vaccine.vaccine === "Antiqua")
+          .filter((vaccine) => vaccine.arrived.includes("2021-03")).length
+      }`,
+      Zerphy: `${
+        vaccines
+          .filter((vaccine) => vaccine.vaccine === "Zerpfy")
+          .filter((vaccine) => vaccine.arrived.includes("2021-03")).length
+      }`,
+    },
+    {
+      name: "April",
+      SolarBhuddica: `${
+        vaccines
+          .filter((vaccine) => vaccine.vaccine === "SolarBuddhica")
+          .filter((vaccine) => vaccine.arrived.includes("2021-04")).length
+      }`,
+      Antiqua: `${
+        vaccines
+          .filter((vaccine) => vaccine.vaccine === "Antiqua")
+          .filter((vaccine) => vaccine.arrived.includes("2021-04")).length
+      }`,
+      Zerphy: `${
+        vaccines
+          .filter((vaccine) => vaccine.vaccine === "Zerpfy")
+          .filter((vaccine) => vaccine.arrived.includes("2021-04")).length
+      }`,
+    },
+  ];
+
   return (
     <Router>
       <div>
@@ -40,19 +115,19 @@ const App = () => {
             <About />
           </Route>
           <Route path="/solar">
-            <Solar vaccines={vaccines} />
+            <Solar vaccines={vaccines} data={data} />
           </Route>
           <Route path="/antiqua">
-            <Antiqua vaccines={vaccines} />
+            <Antiqua vaccines={vaccines} data={data} />
           </Route>
           <Route path="/zerpfy">
-            <Zerpfy vaccines={vaccines} />
+            <Zerpfy vaccines={vaccines} data={data} />
           </Route>
           <Route path="/vaccinelist">
             <VaccineList vaccines={vaccines} />
           </Route>
           <Route path="/">
-            <Info vaccines={vaccines} />
+            <Info vaccines={vaccines} data={data} />
           </Route>
         </Switch>
       </div>
