@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Vaccine from "./Vaccine";
-import vaccineService from "../services/vaccine";
+import Switch from "@material-ui/core/Switch";
 
-const VaccineList = () => {
-  const [vaccines, setVaccines] = useState([]);
+const VaccineList = ({ vaccines }) => {
   const [nameFilter, setNameFilter] = useState("");
   const [areaFilter, setAreaFilter] = useState("");
   const [typeFilter, setTypeFilter] = useState("");
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const initialVaccines = await vaccineService.getAll();
-      setVaccines(initialVaccines);
-    };
-    fetchData();
-  }, []);
+  const [sortByDate, setSortByDate] = useState(false);
+  const [sortByVaccine, setSortByVaccine] = useState(false);
+  const [sortByArea, setSortByArea] = useState(false);
 
   const handleNameFilterChange = (event) => {
     setNameFilter(event.target.value);
@@ -28,7 +22,14 @@ const VaccineList = () => {
 
   return (
     <div>
-      <h1>Filter</h1>
+      <h2>Sort</h2>
+      <p>Sorted by order number by default</p>
+      <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
+        By Date: <Switch onChange={() => setSortByDate(!sortByDate)} />
+        By Vaccine: <Switch onChange={() => setSortByVaccine(!sortByVaccine)} />
+        By Area: <Switch onChange={() => setSortByArea(!sortByArea)} />
+      </div>
+      <h2>Filter</h2>
       <div style={{ display: "flex", gap: "15px", marginBottom: "20px" }}>
         <div>
           By Name{" "}
@@ -45,7 +46,18 @@ const VaccineList = () => {
       </div>
       <div>
         {vaccines
-          .sort((max, min) => max.orderNumber - min.orderNumber)
+          .sort((max, min) =>
+            sortByDate
+              ? new Date(max.arrived).getTime() -
+                new Date(min.arrived).getTime()
+              : max.orderNumber - min.orderNumber
+          )
+          .sort((a, b) => sortByVaccine && (a.vaccine > b.vaccine ? 1 : -1))
+          .sort(
+            (a, b) =>
+              sortByArea &&
+              (a.healthCareDistrict > b.healthCareDistrict ? 1 : -1)
+          )
           .filter((vaccine) =>
             vaccine.responsiblePerson
               .toLowerCase()

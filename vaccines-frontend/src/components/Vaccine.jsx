@@ -2,7 +2,7 @@ import React from "react";
 
 const Vaccine = ({ vaccine }) => {
   return (
-    <div style={{ border: "1px solid black", margin: "2px", width: "400px" }}>
+    <div style={{ border: "1px solid black", margin: "2px", width: "500px" }}>
       <strong>{vaccine.orderNumber}</strong> - {vaccine.responsiblePerson} -{" "}
       {vaccine.healthCareDistrict} -{" "}
       <p
@@ -17,7 +17,8 @@ const Vaccine = ({ vaccine }) => {
         }}
       >
         {vaccine.vaccine}
-      </p>
+      </p>{" "}
+      - {new Date(vaccine.arrived).toLocaleDateString()}
     </div>
   );
 };
