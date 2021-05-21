@@ -96,10 +96,10 @@ const App = () => {
             <Zerpfy vaccines={vaccines} data={data} />
           </Route>
           <Route path="/vaccinelist">
-            <VaccineList vaccines={vaccines} />
+            <VaccineList vaccines={vaccines} vaccinations={vaccinations} />
           </Route>
           <Route path="/vaccinationlist">
-            <VaccinationList vaccinations={vaccinations} />
+            <VaccinationList vaccinations={vaccinations} vaccines={vaccines} />
           </Route>
           <Route path="/">
             <Info vaccines={vaccines} data={data} />

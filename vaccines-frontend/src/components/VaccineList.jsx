@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Vaccine from "./Vaccine";
 import Switch from "@material-ui/core/Switch";
 
-const VaccineList = ({ vaccines }) => {
+const VaccineList = ({ vaccines, vaccinations }) => {
   const [nameFilter, setNameFilter] = useState("");
   const [areaFilter, setAreaFilter] = useState("");
   const [typeFilter, setTypeFilter] = useState("");
@@ -72,7 +72,11 @@ const VaccineList = ({ vaccines }) => {
             vaccine.vaccine.toLowerCase().includes(typeFilter.toLowerCase())
           )
           .map((vaccine) => (
-            <Vaccine key={vaccine.id} vaccine={vaccine} />
+            <Vaccine
+              key={vaccine.id}
+              vaccine={vaccine}
+              vaccinations={vaccinations}
+            />
           ))}
       </div>
     </div>

@@ -1,8 +1,12 @@
 import React from "react";
 
-const Vaccine = ({ vaccine }) => {
+const Vaccine = ({ vaccine, vaccinations }) => {
+  const vaccination = vaccinations.filter(
+    (vaccination) => vaccination.sourceBottle === vaccine.id
+  );
+
   return (
-    <div style={{ border: "1px solid black", margin: "2px", width: "500px" }}>
+    <div style={{ border: "1px solid black", margin: "2px", width: "600px" }}>
       <strong>{vaccine.orderNumber}</strong> - {vaccine.responsiblePerson} -{" "}
       {vaccine.healthCareDistrict} -{" "}
       <p
@@ -18,7 +22,8 @@ const Vaccine = ({ vaccine }) => {
       >
         {vaccine.vaccine}
       </p>{" "}
-      - {new Date(vaccine.arrived).toLocaleDateString()}
+      - {new Date(vaccine.arrived).toLocaleDateString()} - Used:{" "}
+      {vaccination.length}/{vaccine.injections}
     </div>
   );
 };
