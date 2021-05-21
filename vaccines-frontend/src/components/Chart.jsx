@@ -60,7 +60,7 @@ const Chart = ({ vaccines, data }) => {
         />
         <Line
           type="monotone"
-          dataKey="Zerphy"
+          dataKey="Zerpfy"
           stroke="#d84a26"
           activeDot={{ r: 8 }}
         />
@@ -85,7 +85,7 @@ const Chart = ({ vaccines, data }) => {
           <Legend />
           <Bar dataKey="SolarBhuddica" stackId="a" fill="#8884d8" />
           <Bar dataKey="Antiqua" stackId="a" fill="#82ca9d" />
-          <Bar dataKey="Zerphy" stackId="a" fill="#e26c28" />
+          <Bar dataKey="Zerpfy" stackId="a" fill="#e26c28" />
         </BarChart>
 
         <PieChart width={400} height={400}>

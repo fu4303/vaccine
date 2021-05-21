@@ -25,7 +25,7 @@ const Zerpfy = ({ vaccines, data }) => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="Zerphy" fill="#e26c28" />
+          <Bar dataKey="Zerpfy" fill="#e26c28" />
         </BarChart>
       </div>
     </div>

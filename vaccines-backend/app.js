@@ -5,6 +5,7 @@ const app = express();
 const cors = require("cors");
 
 const vaccineRouter = require("./controllers/vaccines");
+const vaccinationsRouter = require("./controllers/vaccinations");
 
 const logger = require("./utils/logger");
 const mongoose = require("mongoose");
@@ -37,5 +38,6 @@ app.use(express.static("build"));
 app.use(express.json());
 
 app.use("/api/vaccines", vaccineRouter);
+app.use("/api/vaccinations", vaccinationsRouter);
 
 module.exports = app;

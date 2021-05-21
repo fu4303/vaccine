@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import Chart from "./Chart";
 
 const Info = ({ vaccines, data }) => {
-  const solar = vaccines.filter(
+  const solarLength = vaccines.filter(
     (vaccine) => vaccine.vaccine === "SolarBuddhica"
   ).length;
-  const antiqua = vaccines.filter(
+  const antiquaLength = vaccines.filter(
     (vaccine) => vaccine.vaccine === "Antiqua"
   ).length;
-  const zerpfy = vaccines.filter(
+  const zerpfyLength = vaccines.filter(
     (vaccine) => vaccine.vaccine === "Zerpfy"
   ).length;
 
@@ -24,13 +24,13 @@ const Info = ({ vaccines, data }) => {
       <h1>Vaccines Statistics</h1>
       <div>
         <Link to="/solar">
-          <div>SolarBuddhica: {solar}</div>
+          <div>SolarBuddhica: {solarLength}</div>
         </Link>
         <Link to="/antiqua">
-          <div>Antiqua: {antiqua}</div>
+          <div>Antiqua: {antiquaLength}</div>
         </Link>
         <Link to="/zerpfy">
-          <div>Zerpfy: {zerpfy}</div>
+          <div>Zerpfy: {zerpfyLength}</div>
         </Link>
         <Link to="/vaccinelist">
           <div>Total: {vaccines.length}</div>

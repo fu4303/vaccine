@@ -19,78 +19,36 @@ const App = () => {
     fetchData();
   }, []);
 
+  const vaccineAmount = (type, month) => {
+    return vaccines
+      .filter((vaccine) => vaccine.vaccine === type)
+      .filter((vaccine) => vaccine.arrived.includes(`2021-${month}`)).length;
+  };
+
   const data = [
     {
       name: "January",
-      SolarBhuddica: `${
-        vaccines
-          .filter((vaccine) => vaccine.vaccine === "SolarBuddhica")
-          .filter((vaccine) => vaccine.arrived.includes("2021-01")).length
-      }`,
-      Antiqua: `${
-        vaccines
-          .filter((vaccine) => vaccine.vaccine === "Antiqua")
-          .filter((vaccine) => vaccine.arrived.includes("2021-01")).length
-      }`,
-      Zerphy: `${
-        vaccines
-          .filter((vaccine) => vaccine.vaccine === "Zerpfy")
-          .filter((vaccine) => vaccine.arrived.includes("2021-01")).length
-      }`,
+      SolarBhuddica: `${vaccineAmount("SolarBuddhica", "01")}`,
+      Antiqua: `${vaccineAmount("Antiqua", "01")}`,
+      Zerpfy: `${vaccineAmount("Zerpfy", "01")}`,
     },
     {
       name: "February",
-      SolarBhuddica: `${
-        vaccines
-          .filter((vaccine) => vaccine.vaccine === "SolarBuddhica")
-          .filter((vaccine) => vaccine.arrived.includes("2021-02")).length
-      }`,
-      Antiqua: `${
-        vaccines
-          .filter((vaccine) => vaccine.vaccine === "Antiqua")
-          .filter((vaccine) => vaccine.arrived.includes("2021-02")).length
-      }`,
-      Zerphy: `${
-        vaccines
-          .filter((vaccine) => vaccine.vaccine === "Zerpfy")
-          .filter((vaccine) => vaccine.arrived.includes("2021-02")).length
-      }`,
+      SolarBhuddica: `${vaccineAmount("SolarBuddhica", "02")}`,
+      Antiqua: `${vaccineAmount("Antiqua", "02")}`,
+      Zerpfy: `${vaccineAmount("Zerpfy", "02")}`,
     },
     {
       name: "March",
-      SolarBhuddica: `${
-        vaccines
-          .filter((vaccine) => vaccine.vaccine === "SolarBuddhica")
-          .filter((vaccine) => vaccine.arrived.includes("2021-03")).length
-      }`,
-      Antiqua: `${
-        vaccines
-          .filter((vaccine) => vaccine.vaccine === "Antiqua")
-          .filter((vaccine) => vaccine.arrived.includes("2021-03")).length
-      }`,
-      Zerphy: `${
-        vaccines
-          .filter((vaccine) => vaccine.vaccine === "Zerpfy")
-          .filter((vaccine) => vaccine.arrived.includes("2021-03")).length
-      }`,
+      SolarBhuddica: `${vaccineAmount("SolarBuddhica", "03")}`,
+      Antiqua: `${vaccineAmount("Antiqua", "03")}`,
+      Zerpfy: `${vaccineAmount("Zerpfy", "03")}`,
     },
     {
       name: "April",
-      SolarBhuddica: `${
-        vaccines
-          .filter((vaccine) => vaccine.vaccine === "SolarBuddhica")
-          .filter((vaccine) => vaccine.arrived.includes("2021-04")).length
-      }`,
-      Antiqua: `${
-        vaccines
-          .filter((vaccine) => vaccine.vaccine === "Antiqua")
-          .filter((vaccine) => vaccine.arrived.includes("2021-04")).length
-      }`,
-      Zerphy: `${
-        vaccines
-          .filter((vaccine) => vaccine.vaccine === "Zerpfy")
-          .filter((vaccine) => vaccine.arrived.includes("2021-04")).length
-      }`,
+      SolarBhuddica: `${vaccineAmount("SolarBuddhica", "04")}`,
+      Antiqua: `${vaccineAmount("Antiqua", "04")}`,
+      Zerpfy: `${vaccineAmount("Zerpfy", "04")}`,
     },
   ];
 
