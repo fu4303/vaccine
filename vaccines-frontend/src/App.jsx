@@ -2,19 +2,30 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import About from "./components/About";
 import VaccineList from "./components/VaccineList";
+import VaccinationList from "./components/VaccinationList";
 import Info from "./components/Info";
 import Solar from "./components/Solar";
 import Antiqua from "./components/Antiqua";
 import Zerpfy from "./components/Zerpfy";
 import vaccineService from "./services/vaccine";
+import vaccinationService from "./services/vaccination";
 
 const App = () => {
   const [vaccines, setVaccines] = useState([]);
+  const [vaccinations, setVaccinations] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const initialVaccines = await vaccineService.getAll();
       setVaccines(initialVaccines);
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const initialVaccinations = await vaccinationService.getAll();
+      setVaccinations(initialVaccinations);
     };
     fetchData();
   }, []);
@@ -64,6 +75,9 @@ const App = () => {
               <Link to="/vaccinelist">Vaccine List</Link>
             </p>
             <p>
+              <Link to="/vaccinationlist">Vaccination List</Link>
+            </p>
+            <p>
               <Link to="/about">About</Link>
             </p>
           </div>
@@ -83,6 +97,9 @@ const App = () => {
           </Route>
           <Route path="/vaccinelist">
             <VaccineList vaccines={vaccines} />
+          </Route>
+          <Route path="/vaccinationlist">
+            <VaccinationList vaccinations={vaccinations} />
           </Route>
           <Route path="/">
             <Info vaccines={vaccines} data={data} />

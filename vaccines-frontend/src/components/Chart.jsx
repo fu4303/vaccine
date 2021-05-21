@@ -12,24 +12,55 @@ import {
   PieChart,
   Pie,
   Cell,
+  Treemap,
 } from "recharts";
 
 const Chart = ({ vaccines, data }) => {
   const COLORS = ["#8884d8", "#82ca9d", "#d84a26"];
 
-  const data1 = [
+  const vaccineAmountByType = (type) => {
+    return vaccines.filter((vaccine) => vaccine.vaccine === type).length;
+  };
+  const vaccineAmountByArea = (area) => {
+    return vaccines.filter((vaccine) => vaccine.healthCareDistrict === area)
+      .length;
+  };
+
+  const vaccineDataByType = [
     {
-      name: "Group A",
-      value: vaccines.filter((vaccine) => vaccine.vaccine === "SolarBuddhica")
-        .length,
+      name: "SolarBuddhica",
+      value: vaccineAmountByType("SolarBuddhica"),
     },
     {
-      name: "Group B",
-      value: vaccines.filter((vaccine) => vaccine.vaccine === "Antiqua").length,
+      name: "Antiqua",
+      value: vaccineAmountByType("Antiqua"),
     },
     {
-      name: "Group C",
-      value: vaccines.filter((vaccine) => vaccine.vaccine === "Zerpfy").length,
+      name: "Zerpfy",
+      value: vaccineAmountByType("Zerpfy"),
+    },
+  ];
+
+  const vaccineDataByArea = [
+    {
+      name: "HYKS",
+      value: vaccineAmountByArea("HYKS"),
+    },
+    {
+      name: "KYS",
+      value: vaccineAmountByArea("KYS"),
+    },
+    {
+      name: "TAYS",
+      value: vaccineAmountByArea("TAYS"),
+    },
+    {
+      name: "TYKS",
+      value: vaccineAmountByArea("TYKS"),
+    },
+    {
+      name: "OYS",
+      value: vaccineAmountByArea("OYS"),
     },
   ];
 
@@ -49,19 +80,19 @@ const Chart = ({ vaccines, data }) => {
         <Line
           type="monotone"
           dataKey="SolarBhuddica"
-          stroke="#8884d8"
+          stroke={COLORS[0]}
           activeDot={{ r: 8 }}
         />
         <Line
           type="monotone"
           dataKey="Antiqua"
-          stroke="#82ca9d"
+          stroke={COLORS[1]}
           activeDot={{ r: 8 }}
         />
         <Line
           type="monotone"
           dataKey="Zerpfy"
-          stroke="#d84a26"
+          stroke={COLORS[2]}
           activeDot={{ r: 8 }}
         />
       </LineChart>
@@ -83,18 +114,18 @@ const Chart = ({ vaccines, data }) => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="SolarBhuddica" stackId="a" fill="#8884d8" />
-          <Bar dataKey="Antiqua" stackId="a" fill="#82ca9d" />
-          <Bar dataKey="Zerpfy" stackId="a" fill="#e26c28" />
+          <Bar dataKey="SolarBhuddica" stackId="a" fill={COLORS[0]} />
+          <Bar dataKey="Antiqua" stackId="a" fill={COLORS[1]} />
+          <Bar dataKey="Zerpfy" stackId="a" fill={COLORS[2]} />
         </BarChart>
 
         <PieChart width={400} height={400}>
           <Pie
-            data={data1}
+            data={vaccineDataByType}
             cx="50%"
             cy="50%"
             labelLine={true}
-            label={`${data1.value}`}
+            label={`${vaccineDataByType.value}`}
             outerRadius={80}
             dataKey="value"
           >
@@ -107,6 +138,17 @@ const Chart = ({ vaccines, data }) => {
           </Pie>
         </PieChart>
       </div>
+
+      <h2>Vaccines by Health Districts</h2>
+      <Treemap
+        width={400}
+        height={200}
+        data={vaccineDataByArea}
+        dataKey="value"
+        ratio={4 / 3}
+        stroke="#fff"
+        fill={COLORS[0]}
+      />
     </div>
   );
 };

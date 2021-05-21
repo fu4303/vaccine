@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const vaccinationSchema = new mongoose.Schema({
-  "vaccination-id": String,
+  ["vaccination-id"]: String,
   sourceBottle: String,
   gender: String,
   vaccinationDate: String,
