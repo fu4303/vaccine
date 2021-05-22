@@ -5,7 +5,14 @@ const Vaccination = ({ vaccination, vaccines }) => {
     (vaccine) => vaccine.id === vaccination.sourceBottle
   );
   return (
-    <div style={{ border: "1px solid black", margin: "2px", width: "750px" }}>
+    <div
+      style={{
+        border: "1px solid black",
+        margin: "5px",
+        width: "350px",
+        padding: "5px",
+      }}
+    >
       <p>{vaccination.sourceBottle}</p>
       <p>{vaccination.gender}</p>
       <p>{new Date(vaccination.vaccinationDate).toLocaleDateString()}</p>

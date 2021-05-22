@@ -13,12 +13,6 @@ const Info = ({ vaccines, data }) => {
     (vaccine) => vaccine.vaccine === "Zerpfy"
   ).length;
 
-  console.log(
-    vaccines
-      .filter((vaccine) => vaccine.vaccine === "Antiqua")
-      .filter((vaccine) => vaccine.arrived.includes("2021-02"))
-  );
-
   return (
     <div>
       <h1>Vaccines Statistics</h1>

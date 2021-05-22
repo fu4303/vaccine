@@ -9,6 +9,7 @@ import Antiqua from "./components/Antiqua";
 import Zerpfy from "./components/Zerpfy";
 import vaccineService from "./services/vaccine";
 import vaccinationService from "./services/vaccination";
+import Menu from "./components/Menu";
 
 const App = () => {
   const [vaccines, setVaccines] = useState([]);
@@ -66,22 +67,7 @@ const App = () => {
   return (
     <Router>
       <div>
-        <nav>
-          <div style={{ display: "flex", gap: "15px" }}>
-            <p>
-              <Link to="/">Home</Link>
-            </p>
-            <p>
-              <Link to="/vaccinelist">Vaccine List</Link>
-            </p>
-            <p>
-              <Link to="/vaccinationlist">Vaccination List</Link>
-            </p>
-            <p>
-              <Link to="/about">About</Link>
-            </p>
-          </div>
-        </nav>
+        <Menu />
         <Switch>
           <Route path="/about">
             <About />

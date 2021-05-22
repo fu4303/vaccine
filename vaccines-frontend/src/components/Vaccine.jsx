@@ -6,7 +6,7 @@ const Vaccine = ({ vaccine, vaccinations }) => {
   );
 
   return (
-    <div style={{ border: "1px solid black", margin: "2px", width: "600px" }}>
+    <div style={{ border: "1px solid black", margin: "5px", width: "600px" }}>
       <strong>{vaccine.orderNumber}</strong> - {vaccine.responsiblePerson} -{" "}
       {vaccine.healthCareDistrict} -{" "}
       <p

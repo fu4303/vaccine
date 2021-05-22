@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Vaccine from "./Vaccine";
 import Switch from "@material-ui/core/Switch";
+import TextField from "@material-ui/core/TextField";
 
 const VaccineList = ({ vaccines, vaccinations }) => {
   const [nameFilter, setNameFilter] = useState("");
@@ -22,26 +23,38 @@ const VaccineList = ({ vaccines, vaccinations }) => {
 
   return (
     <div>
-      <h2>Sort</h2>
+      <h2>Sort by</h2>
       <p>Sorted by order number by default</p>
       <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-        By Date: <Switch onChange={() => setSortByDate(!sortByDate)} />
-        By Vaccine: <Switch onChange={() => setSortByVaccine(!sortByVaccine)} />
-        By Area: <Switch onChange={() => setSortByArea(!sortByArea)} />
+        Date: <Switch onChange={() => setSortByDate(!sortByDate)} />
+        Vaccine: <Switch onChange={() => setSortByVaccine(!sortByVaccine)} />
+        Area: <Switch onChange={() => setSortByArea(!sortByArea)} />
       </div>
-      <h2>Filter</h2>
+      <h2>Filter by</h2>
       <div style={{ display: "flex", gap: "15px", marginBottom: "20px" }}>
         <div>
-          By Name{" "}
-          <input onChange={handleNameFilterChange} placeholder="Jukka..." />
+          <TextField
+            id="standard-basic"
+            label="Name"
+            onChange={handleNameFilterChange}
+            placeholder="Jukka..."
+          />
         </div>
         <div>
-          By Area{" "}
-          <input onChange={handleAreaFilterChange} placeholder="HYKS..." />
+          <TextField
+            id="standard-basic"
+            label="Area"
+            onChange={handleAreaFilterChange}
+            placeholder="HYKS..."
+          />
         </div>
         <div>
-          By Vaccine Type{" "}
-          <input onChange={handleTypeFilterChange} placeholder="Antiqua..." />
+          <TextField
+            id="standard-basic"
+            label="Vaccine Type"
+            onChange={handleTypeFilterChange}
+            placeholder="Antiqua..."
+          />
         </div>
       </div>
       <div>

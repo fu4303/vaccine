@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Vaccination from "./Vaccination";
 import Switch from "@material-ui/core/Switch";
+import TextField from "@material-ui/core/TextField";
 
 const VaccinationList = ({ vaccinations, vaccines }) => {
   const [idFilter, setIdFilter] = useState("");
@@ -17,13 +18,13 @@ const VaccinationList = ({ vaccinations, vaccines }) => {
 
   return (
     <div>
-      <h2>Sort</h2>
+      <h2>Sort by</h2>
       <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-        By Date: <Switch onChange={() => setSortByDate(!sortByDate)} />
-        By Gender: <Switch onChange={() => setSortByGender(!sortByGender)} />
+        Date: <Switch onChange={() => setSortByDate(!sortByDate)} />
+        Gender: <Switch onChange={() => setSortByGender(!sortByGender)} />
       </div>
 
-      <h2>Filter</h2>
+      <h2>Filter by</h2>
       <div
         style={{
           display: "flex",
@@ -33,16 +34,17 @@ const VaccinationList = ({ vaccinations, vaccines }) => {
         }}
       >
         <div>
-          By Vaccination Id{" "}
-          <input
+          <TextField
+            id="standard-basic"
+            label="Vaccination Id"
             onChange={handleIdFilterChange}
             placeholder="6ae207d9-6fa9-4b62..."
           />
         </div>
-
         <div>
-          By Bottle Source{" "}
-          <input
+          <TextField
+            id="standard-basic"
+            label="Bottle Source"
             onChange={handleBottleFilterChange}
             placeholder="75ae9638-3ad5-4433..."
           />
