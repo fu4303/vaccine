@@ -4,11 +4,14 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "eslint": "eslint ."
   },
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "axios": "^0.21.1",
+    "eslint": "^7.27.0",
+    "eslint-plugin-react": "^7.23.2",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-router-dom": "^5.2.0",

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import About from "./components/About";
 import VaccineList from "./components/VaccineList";
 import VaccinationList from "./components/VaccinationList";
@@ -73,13 +73,25 @@ const App = () => {
             <About />
           </Route>
           <Route path="/solar">
-            <Solar vaccines={vaccines} data={data} />
+            <Solar
+              vaccines={vaccines}
+              data={data}
+              vaccinations={vaccinations}
+            />
           </Route>
           <Route path="/antiqua">
-            <Antiqua vaccines={vaccines} data={data} />
+            <Antiqua
+              vaccines={vaccines}
+              data={data}
+              vaccinations={vaccinations}
+            />
           </Route>
           <Route path="/zerpfy">
-            <Zerpfy vaccines={vaccines} data={data} />
+            <Zerpfy
+              vaccines={vaccines}
+              data={data}
+              vaccinations={vaccinations}
+            />
           </Route>
           <Route path="/vaccinelist">
             <VaccineList vaccines={vaccines} vaccinations={vaccinations} />

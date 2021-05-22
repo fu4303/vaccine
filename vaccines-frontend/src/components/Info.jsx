@@ -17,18 +17,28 @@ const Info = ({ vaccines, data }) => {
     <div>
       <h1>Vaccines Statistics</h1>
       <div>
-        <Link to="/solar">
-          <div>SolarBuddhica: {solarLength}</div>
-        </Link>
-        <Link to="/antiqua">
-          <div>Antiqua: {antiquaLength}</div>
-        </Link>
-        <Link to="/zerpfy">
-          <div>Zerpfy: {zerpfyLength}</div>
-        </Link>
-        <Link to="/vaccinelist">
-          <div>Total: {vaccines.length}</div>
-        </Link>
+        <Link to="/solar">SolarBuddhica</Link>
+        <div>
+          <p>Bottles: {solarLength}</p>
+          <p>Injections: {solarLength * 6}</p>
+        </div>
+        <Link to="/antiqua">Antiqua</Link>
+        <div>
+          <p>Bottles: {antiquaLength}</p>
+          <p>Injections: {antiquaLength * 4}</p>
+        </div>
+        <Link to="/zerpfy">Zerpfy</Link>
+        <div>
+          <p>Bottles: {zerpfyLength}</p>
+          <p>Injections: {zerpfyLength * 5}</p>
+        </div>
+        <Link to="/vaccinelist">Total</Link>
+        <div>
+          <p>Bottles: {vaccines.length}</p>
+          <p>
+            Injections: {solarLength * 6 + antiquaLength * 4 + zerpfyLength * 5}
+          </p>
+        </div>
       </div>
       <h2>Vaccine Arrivals by Month</h2>
       <Chart vaccines={vaccines} data={data} />
