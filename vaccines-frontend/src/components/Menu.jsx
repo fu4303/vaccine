@@ -15,6 +15,9 @@ const Menu = () => {
           <Link to="/">Home</Link>
         </p>
         <p className="menuLink">
+          <Link to="/graphs">Graphs</Link>
+        </p>
+        <p className="menuLink">
           <Link to="/vaccinelist">Vaccine List</Link>
         </p>
         <p className="menuLink">

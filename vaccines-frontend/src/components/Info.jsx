@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Chart from "./Chart";
 
-const Info = ({ vaccines, data }) => {
+const Info = ({ vaccines }) => {
   const solarLength = vaccines.filter(
     (vaccine) => vaccine.vaccine === "SolarBuddhica"
   ).length;
@@ -40,8 +39,6 @@ const Info = ({ vaccines, data }) => {
           </p>
         </div>
       </div>
-      <h2>Vaccine Arrivals by Month</h2>
-      <Chart vaccines={vaccines} data={data} />
     </div>
   );
 };

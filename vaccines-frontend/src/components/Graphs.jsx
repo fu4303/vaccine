@@ -15,7 +15,7 @@ import {
   Treemap,
 } from "recharts";
 
-const Chart = ({ vaccines, data }) => {
+const Graphs = ({ vaccines, data }) => {
   const COLORS = ["#8884d8", "#82ca9d", "#d84a26"];
 
   const vaccineAmountByType = (type) => {
@@ -66,6 +66,7 @@ const Chart = ({ vaccines, data }) => {
 
   return (
     <div>
+      <h2>Vaccine Arrivals by Month</h2>
       <LineChart
         width={730}
         height={250}
@@ -153,4 +154,4 @@ const Chart = ({ vaccines, data }) => {
   );
 };
 
-export default Chart;
+export default Graphs;

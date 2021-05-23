@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Menu from "./components/Menu";
 import About from "./components/About";
 import VaccineList from "./components/VaccineList";
 import VaccinationList from "./components/VaccinationList";
 import Info from "./components/Info";
+import Graphs from "./components/Graphs";
 import Solar from "./components/Solar";
 import Antiqua from "./components/Antiqua";
 import Zerpfy from "./components/Zerpfy";
 import vaccineService from "./services/vaccine";
 import vaccinationService from "./services/vaccination";
-import Menu from "./components/Menu";
 
 const App = () => {
   const [vaccines, setVaccines] = useState([]);
@@ -99,8 +100,11 @@ const App = () => {
           <Route path="/vaccinationlist">
             <VaccinationList vaccinations={vaccinations} vaccines={vaccines} />
           </Route>
+          <Route path="/graphs">
+            <Graphs vaccines={vaccines} data={data} />
+          </Route>
           <Route path="/">
-            <Info vaccines={vaccines} data={data} />
+            <Info vaccines={vaccines} />
           </Route>
         </Switch>
       </div>
