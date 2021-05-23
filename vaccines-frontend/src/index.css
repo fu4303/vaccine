@@ -105,3 +105,8 @@ p.menuLink > a {
 .menuLink:active {
   transform: scale(1);
 }
+
+.active {
+  background-color: red;
+  color: #fff;
+}

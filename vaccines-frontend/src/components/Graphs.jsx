@@ -18,13 +18,11 @@ import {
 const Graphs = ({ vaccines, data }) => {
   const COLORS = ["#8884d8", "#82ca9d", "#d84a26"];
 
-  const vaccineAmountByType = (type) => {
-    return vaccines.filter((vaccine) => vaccine.vaccine === type).length;
-  };
-  const vaccineAmountByArea = (area) => {
-    return vaccines.filter((vaccine) => vaccine.healthCareDistrict === area)
-      .length;
-  };
+  const vaccineAmountByType = (type) =>
+    vaccines.filter((vaccine) => vaccine.vaccine === type).length;
+
+  const vaccinesInCurrentArea = (area) =>
+    vaccines.filter((vaccine) => vaccine.healthCareDistrict === area).length;
 
   const vaccineDataByType = [
     {
@@ -43,29 +41,36 @@ const Graphs = ({ vaccines, data }) => {
 
   const vaccineDataByArea = [
     {
-      name: "HYKS",
-      value: vaccineAmountByArea("HYKS"),
+      name: `HYKS - ${vaccinesInCurrentArea("HYKS")}`,
+      value: vaccinesInCurrentArea("HYKS"),
     },
     {
-      name: "KYS",
-      value: vaccineAmountByArea("KYS"),
+      name: `KYS - ${vaccinesInCurrentArea("KYS")}`,
+      value: vaccinesInCurrentArea("KYS"),
     },
     {
-      name: "TAYS",
-      value: vaccineAmountByArea("TAYS"),
+      name: `TAYS - ${vaccinesInCurrentArea("TAYS")}`,
+      value: vaccinesInCurrentArea("TAYS"),
     },
     {
-      name: "TYKS",
-      value: vaccineAmountByArea("TYKS"),
+      name: `TYKS - ${vaccinesInCurrentArea("TYKS")}`,
+      value: vaccinesInCurrentArea("TYKS"),
     },
     {
-      name: "OYS",
-      value: vaccineAmountByArea("OYS"),
+      name: `OYS - ${vaccinesInCurrentArea("OYS")}`,
+      value: vaccinesInCurrentArea("OYS"),
     },
   ];
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <h2>Vaccine Arrivals by Month</h2>
       <LineChart
         width={730}
