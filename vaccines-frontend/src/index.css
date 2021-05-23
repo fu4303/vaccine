@@ -110,3 +110,8 @@ p.menuLink > a {
   background-color: red;
   color: #fff;
 }
+
+th.MuiTableCell-root {
+  text-transform: uppercase;
+  font-weight: bold;
+}
