@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { useState } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import {
@@ -18,7 +19,7 @@ import FirstPageIcon from "@material-ui/icons/FirstPage";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import LastPageIcon from "@material-ui/icons/LastPage";
-import Vaccination from "./Vaccination";
+import Vaccine from "./Vaccine";
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -92,21 +93,29 @@ function TablePaginationActions(props) {
 
 const useStyles2 = makeStyles({
   table: {
-    minWidth: 500,
+    minWidth: 300,
+  },
+  cell: {
+    width: 150,
   },
 });
 
-const CustomPaginationActionsTable = ({ rows, vaccines }) => {
-  const [idFilter, setIdFilter] = useState("");
-  const [bottleFilter, setBottleFilter] = useState("");
+const VaccineListPagination = ({ rows, vaccinations }) => {
+  const [nameFilter, setNameFilter] = useState("");
+  const [areaFilter, setAreaFilter] = useState("");
+  const [typeFilter, setTypeFilter] = useState("");
   const [sortByDate, setSortByDate] = useState(false);
-  const [sortByGender, setSortByGender] = useState(false);
+  const [sortByVaccine, setSortByVaccine] = useState(false);
+  const [sortByArea, setSortByArea] = useState(false);
 
-  const handleIdFilterChange = (event) => {
-    setIdFilter(event.target.value);
+  const handleNameFilterChange = (event) => {
+    setNameFilter(event.target.value);
   };
-  const handleBottleFilterChange = (event) => {
-    setBottleFilter(event.target.value);
+  const handleAreaFilterChange = (event) => {
+    setAreaFilter(event.target.value);
+  };
+  const handleTypeFilterChange = (event) => {
+    setTypeFilter(event.target.value);
   };
 
   const classes = useStyles2();
@@ -130,32 +139,33 @@ const CustomPaginationActionsTable = ({ rows, vaccines }) => {
       <h2>Sort by</h2>
       <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
         Date: <Switch onChange={() => setSortByDate(!sortByDate)} />
-        Gender: <Switch onChange={() => setSortByGender(!sortByGender)} />
+        Vaccine: <Switch onChange={() => setSortByVaccine(!sortByVaccine)} />
+        Area: <Switch onChange={() => setSortByArea(!sortByArea)} />
       </div>
-
       <h2>Filter by</h2>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "15px",
-          marginBottom: "20px",
-        }}
-      >
+      <div style={{ display: "flex", gap: "15px", marginBottom: "20px" }}>
         <div>
           <TextField
             id="standard-basic"
-            label="Vaccination Id"
-            onChange={handleIdFilterChange}
-            placeholder="6ae207d9-6fa9-4b62..."
+            label="Name"
+            onChange={handleNameFilterChange}
+            placeholder="Jukka..."
           />
         </div>
         <div>
           <TextField
             id="standard-basic"
-            label="Bottle Source"
-            onChange={handleBottleFilterChange}
-            placeholder="75ae9638-3ad5-4433..."
+            label="Area"
+            onChange={handleAreaFilterChange}
+            placeholder="HYKS..."
+          />
+        </div>
+        <div>
+          <TextField
+            id="standard-basic"
+            label="Vaccine Type"
+            onChange={handleTypeFilterChange}
+            placeholder="Antiqua..."
           />
         </div>
       </div>
@@ -163,33 +173,52 @@ const CustomPaginationActionsTable = ({ rows, vaccines }) => {
         <Table className={classes.table}>
           <TableHead>
             <TableRow>
-              <TableCell>Source Bottle</TableCell>
-              <TableCell align="right">Gender</TableCell>
-              <TableCell align="right">Date</TableCell>
-              <TableCell align="right">Type</TableCell>
-              <TableCell align="right">Responsible Person</TableCell>
-              <TableCell align="right">Area</TableCell>
+              <TableCell className={classes.cell}>Order Number</TableCell>
+              <TableCell className={classes.cell}>Responsible Person</TableCell>
+              <TableCell className={classes.cell}>Area</TableCell>
+              <TableCell className={classes.cell}>Type</TableCell>
+              <TableCell className={classes.cell}>Date</TableCell>
+              <TableCell className={classes.cell}>Injections</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {(rowsPerPage > 0
-              ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              ? rows
+                  .sort((max, min) =>
+                    sortByDate
+                      ? new Date(max.arrived).getTime() -
+                        new Date(min.arrived).getTime()
+                      : max.orderNumber - min.orderNumber
+                  )
+                  .sort(
+                    (a, b) => sortByVaccine && (a.vaccine > b.vaccine ? 1 : -1)
+                  )
+                  .sort(
+                    (a, b) =>
+                      sortByArea &&
+                      (a.healthCareDistrict > b.healthCareDistrict ? 1 : -1)
+                  )
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : rows
             )
-              .sort((max, min) =>
-                sortByDate
-                  ? new Date(max.vaccinationDate).getTime() -
-                    new Date(min.vaccinationDate).getTime()
-                  : max.vaccinationDate - min.vaccinationDate
+              .filter((vaccine) =>
+                vaccine.responsiblePerson
+                  .toLowerCase()
+                  .includes(nameFilter.toLowerCase())
               )
-              .sort((a, b) => sortByGender && (a.gender > b.gender ? 1 : -1))
-              .filter((vaccine) => vaccine["vaccination-id"].includes(idFilter))
-              .filter((vaccine) => vaccine.sourceBottle.includes(bottleFilter))
-              .map((vaccination) => (
-                <Vaccination
-                  key={vaccination["vaccination-id"]}
-                  vaccination={vaccination}
-                  vaccines={vaccines}
+              .filter((vaccine) =>
+                vaccine.healthCareDistrict
+                  .toLowerCase()
+                  .includes(areaFilter.toLowerCase())
+              )
+              .filter((vaccine) =>
+                vaccine.vaccine.toLowerCase().includes(typeFilter.toLowerCase())
+              )
+              .map((vaccine) => (
+                <Vaccine
+                  key={vaccine.id}
+                  vaccine={vaccine}
+                  vaccinations={vaccinations}
                 />
               ))}
 
@@ -229,4 +258,4 @@ const CustomPaginationActionsTable = ({ rows, vaccines }) => {
   );
 };
 
-export default CustomPaginationActionsTable;
+export default VaccineListPagination;

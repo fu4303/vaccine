@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React from "react";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
@@ -13,7 +14,19 @@ const Vaccination = ({ vaccination, vaccines }) => {
       <TableCell align="right">
         {new Date(vaccination.vaccinationDate).toLocaleDateString()}
       </TableCell>
-      <TableCell align="right">{vaccine[0].vaccine}</TableCell>
+      <TableCell
+        align="right"
+        style={{
+          color:
+            vaccine[0].vaccine === "Antiqua"
+              ? "#82ca9d"
+              : vaccine[0].vaccine === "Zerpfy"
+              ? "#d84a26"
+              : "#8884d8",
+        }}
+      >
+        {vaccine[0].vaccine}
+      </TableCell>
       <TableCell align="right">{vaccine[0].responsiblePerson}</TableCell>
       <TableCell align="right">{vaccine[0].healthCareDistrict}</TableCell>
     </TableRow>

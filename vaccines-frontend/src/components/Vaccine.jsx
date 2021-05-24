@@ -1,4 +1,7 @@
+/* eslint-disable indent */
 import React from "react";
+import TableCell from "@material-ui/core/TableCell";
+import TableRow from "@material-ui/core/TableRow";
 
 const Vaccine = ({ vaccine, vaccinations }) => {
   const vaccination = vaccinations.filter(
@@ -6,25 +9,27 @@ const Vaccine = ({ vaccine, vaccinations }) => {
   );
 
   return (
-    <div style={{ border: "1px solid black", margin: "5px", width: "600px" }}>
-      <strong>{vaccine.orderNumber}</strong> - {vaccine.responsiblePerson} -{" "}
-      {vaccine.healthCareDistrict} -{" "}
-      <p
+    <TableRow key={vaccine.orderNumber}>
+      <TableCell>{vaccine.orderNumber}</TableCell>
+      <TableCell>{vaccine.responsiblePerson}</TableCell>
+      <TableCell>{vaccine.healthCareDistrict}</TableCell>
+      <TableCell
         style={{
-          display: "inline",
           color:
             vaccine.vaccine === "Antiqua"
-              ? "blue"
+              ? "#82ca9d"
               : vaccine.vaccine === "Zerpfy"
-              ? "red"
-              : "green",
+              ? "#d84a26"
+              : "#8884d8",
         }}
       >
         {vaccine.vaccine}
-      </p>{" "}
-      - {new Date(vaccine.arrived).toLocaleDateString()} - Used:{" "}
-      {vaccination.length}/{vaccine.injections}
-    </div>
+      </TableCell>
+      <TableCell>{new Date(vaccine.arrived).toLocaleDateString()}</TableCell>
+      <TableCell>
+        Used: {vaccination.length}/{vaccine.injections}
+      </TableCell>
+    </TableRow>
   );
 };
 export default Vaccine;

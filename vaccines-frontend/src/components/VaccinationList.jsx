@@ -1,10 +1,10 @@
 import React from "react";
-import CustomPaginationActionsTable from "./Pagination";
+import VaccinationListPagination from "./VaccinationListPagination";
 
 const VaccinationList = ({ vaccinations, vaccines }) => {
   return (
     <div>
-      <CustomPaginationActionsTable rows={vaccinations} vaccines={vaccines} />
+      <VaccinationListPagination rows={vaccinations} vaccines={vaccines} />
     </div>
   );
 };
