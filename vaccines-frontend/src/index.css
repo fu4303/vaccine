@@ -85,7 +85,10 @@ select {
   }
 }
 
-.menu {
+.menuContainer {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 15px;
   background-color: #1b4e55;
   padding: 30px;
 }
@@ -114,4 +117,42 @@ p.menuLink > a {
 th.MuiTableCell-root {
   text-transform: uppercase;
   font-weight: bold;
+}
+
+.graphsContainer,
+.aboutContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutHeader {
+  margin-bottom: 20px;
+}
+
+.infoHeader {
+  margin: 20px auto 20px auto;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.infoBasicContainer {
+  width: 300px;
+  padding: 10px;
+}
+
+.infoGraphContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 15px;
+  width: 300px;
+  padding: 10px;
 }

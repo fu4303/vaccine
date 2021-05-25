@@ -3,19 +3,12 @@ import Link from "@material-ui/core/Link";
 
 const About = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <h1 style={{ marginBottom: "20px" }}>About</h1>
-      <h2 style={{ marginBottom: "20px" }}>
+    <div className="aboutContainer">
+      <h1 className="aboutHeader">About</h1>
+      <h2 className="aboutHeader">
         Live on <Link href="http://">Heroku</Link>
       </h2>
-      <h2 style={{ marginBottom: "20px" }}>
+      <h2 className="aboutHeader">
         Source Code on <Link href="http://">GitHub</Link>
       </h2>
 

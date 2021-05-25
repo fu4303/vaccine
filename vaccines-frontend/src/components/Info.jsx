@@ -26,9 +26,9 @@ const Info = ({ vaccines }) => {
         gap: "15px",
       }}
     >
-      <h1>Vaccines Statistics</h1>
-      <div style={{ display: "flex", gap: "15px" }}>
-        <Paper style={{ width: "300px", padding: "10px" }} elevation={3}>
+      <h1 className="infoHeader">Vaccines Statistics</h1>
+      <div className="infoGrid">
+        <Paper className="infoBasicContainer" elevation={3}>
           <Link component={RouterLink} to="/solar">
             SolarBuddhica
           </Link>
@@ -62,20 +62,8 @@ const Info = ({ vaccines }) => {
             </p>
           </div>
         </Paper>
-        <Paper
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-evenly",
-            alignItems: "center",
-            gap: "15px",
-            width: "300px",
-            padding: "10px",
-          }}
-          elevation={3}
-        >
+        <Paper className="infoGraphContainer" elevation={3}>
           <img src={graph} alt="graphs picture" />
-
           <Button variant="contained" color="primary">
             <Link
               component={RouterLink}
@@ -86,6 +74,12 @@ const Info = ({ vaccines }) => {
             </Link>
           </Button>
         </Paper>
+        <Paper className="infoBasicContainer" elevation={3}></Paper>
+        <Paper className="infoBasicContainer" elevation={3}></Paper>
+        <Paper className="infoBasicContainer" elevation={3}></Paper>
+        <Paper className="infoBasicContainer" elevation={3}></Paper>
+        <Paper className="infoBasicContainer" elevation={3}></Paper>
+        <Paper className="infoBasicContainer" elevation={3}></Paper>
       </div>
     </div>
   );

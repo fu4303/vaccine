@@ -63,14 +63,7 @@ const Graphs = ({ vaccines, data }) => {
   ];
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <div className="graphsContainer">
       <h2>Vaccine Arrivals by Month</h2>
       <LineChart
         width={730}
