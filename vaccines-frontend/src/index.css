@@ -131,6 +131,15 @@ th.MuiTableCell-root {
   margin-bottom: 20px;
 }
 
+.infoWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
 .infoHeader {
   margin: 20px auto 20px auto;
 }
@@ -143,7 +152,7 @@ th.MuiTableCell-root {
 }
 
 .infoBasicContainer {
-  width: 300px;
+  max-width: 300px;
   padding: 10px;
 }
 
@@ -153,6 +162,12 @@ th.MuiTableCell-root {
   justify-content: space-evenly;
   align-items: center;
   gap: 15px;
-  width: 300px;
+  max-width: 300px;
   padding: 10px;
+}
+
+.vaccineContainer {
+  border: 1px solid black;
+  box-shadow: 2px 2px crimson;
+  padding: 2px;
 }

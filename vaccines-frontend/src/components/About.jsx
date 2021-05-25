@@ -9,7 +9,8 @@ const About = () => {
         Live on <Link href="http://">Heroku</Link>
       </h2>
       <h2 className="aboutHeader">
-        Source Code on <Link href="http://">GitHub</Link>
+        Source Code on{" "}
+        <Link href="https://github.com/villivald/vaccine">GitHub</Link>
       </h2>
 
       <h2>Made with:</h2>

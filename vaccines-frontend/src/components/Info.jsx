@@ -17,51 +17,66 @@ const Info = ({ vaccines }) => {
   ).length;
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: "15px",
-      }}
-    >
+    <div className="infoWrapper">
       <h1 className="infoHeader">Vaccines Statistics</h1>
       <div className="infoGrid">
         <Paper className="infoBasicContainer" elevation={3}>
-          <Link component={RouterLink} to="/solar">
-            SolarBuddhica
-          </Link>
-          <div style={{ marginBottom: "5px" }}>
-            <p>Bottles: {solarLength}</p>
-            <p>Injections: {solarLength * 6}</p>
-          </div>
-
-          <Link component={RouterLink} to="/antiqua">
-            Antiqua
-          </Link>
-          <div style={{ marginBottom: "5px" }}>
-            <p>Bottles: {antiquaLength}</p>
-            <p>Injections: {antiquaLength * 4}</p>
-          </div>
-          <Link component={RouterLink} to="/zerpfy">
-            Zerpfy
-          </Link>
-          <div style={{ marginBottom: "5px" }}>
-            <p>Bottles: {zerpfyLength}</p>
-            <p>Injections: {zerpfyLength * 5}</p>
-          </div>
-          <Link component={RouterLink} to="/vaccinelist">
-            Total
-          </Link>
-          <div>
-            <p>Bottles: {vaccines.length}</p>
-            <p>
-              Injections:{" "}
-              {solarLength * 6 + antiquaLength * 4 + zerpfyLength * 5}
-            </p>
+          <h3 style={{ marginBottom: "20px", textAlign: "center" }}>
+            Vaccine Type Stats
+          </h3>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "15px",
+            }}
+          >
+            <div className="vaccineContainer">
+              <Link component={RouterLink} to="/solar">
+                SolarBuddhica
+              </Link>
+              <div style={{ marginBottom: "5px" }}>
+                <p>Bottles: {solarLength}</p>
+                <p>Injections: {solarLength * 6}</p>
+              </div>
+            </div>
+            <div className="vaccineContainer">
+              <Link component={RouterLink} to="/antiqua">
+                Antiqua
+              </Link>
+              <div style={{ marginBottom: "5px" }}>
+                <p>Bottles: {antiquaLength}</p>
+                <p>Injections: {antiquaLength * 4}</p>
+              </div>
+            </div>
+            <div className="vaccineContainer">
+              <Link component={RouterLink} to="/zerpfy">
+                Zerpfy
+              </Link>
+              <div style={{ marginBottom: "5px" }}>
+                <p>Bottles: {zerpfyLength}</p>
+                <p>Injections: {zerpfyLength * 5}</p>
+              </div>
+            </div>
+            <div className="vaccineContainer">
+              <Link component={RouterLink} to="/vaccinelist">
+                Total
+              </Link>
+              <div>
+                <p>Bottles: {vaccines.length}</p>
+                <p>
+                  Injections:{" "}
+                  {solarLength * 6 + antiquaLength * 4 + zerpfyLength * 5}
+                </p>
+              </div>
+            </div>
           </div>
         </Paper>
+
+        <Paper className="infoBasicContainer" elevation={3}>
+          <h3 style={{ marginBottom: "20px" }}>Vaccinations Stats</h3>
+        </Paper>
+
         <Paper className="infoGraphContainer" elevation={3}>
           <img src={graph} alt="graphs picture" />
           <Button variant="contained" color="primary">
@@ -74,12 +89,27 @@ const Info = ({ vaccines }) => {
             </Link>
           </Button>
         </Paper>
-        <Paper className="infoBasicContainer" elevation={3}></Paper>
-        <Paper className="infoBasicContainer" elevation={3}></Paper>
-        <Paper className="infoBasicContainer" elevation={3}></Paper>
-        <Paper className="infoBasicContainer" elevation={3}></Paper>
-        <Paper className="infoBasicContainer" elevation={3}></Paper>
-        <Paper className="infoBasicContainer" elevation={3}></Paper>
+
+        <Paper className="infoBasicContainer" elevation={3}>
+          How many of the vaccinations have been used?
+        </Paper>
+        <Paper className="infoBasicContainer" elevation={3}>
+          How many bottles have expired on the given day (remember a bottle
+          expires 30 days after arrival)
+        </Paper>
+        <Paper className="infoBasicContainer" elevation={3}>
+          How many vaccines expired before the usage
+        </Paper>
+        <Paper className="infoBasicContainer" elevation={3}>
+          How many vaccines are left to use?
+        </Paper>
+
+        <Paper className="infoBasicContainer" elevation={3}>
+          <h3>RAW Data</h3> <h3>@</h3>{" "}
+          <Link href="https://github.com/solita/vaccine-exercise-2021/tree/master/resources">
+            GitHub
+          </Link>
+        </Paper>
       </div>
     </div>
   );
