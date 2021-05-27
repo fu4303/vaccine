@@ -128,42 +128,51 @@ const VaccinationListPagination = ({ rows, vaccines }) => {
 
   return (
     <>
-      <h2>Sort by</h2>
-      <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-        Date: <Switch onChange={() => setSortByDate(!sortByDate)} />
-        Gender: <Switch onChange={() => setSortByGender(!sortByGender)} />
-      </div>
-
-      <h2>Filter by</h2>
       <div
         style={{
           display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
           flexDirection: "column",
-          gap: "15px",
-          marginBottom: "20px",
         }}
       >
-        <div>
-          <TextField
-            id="standard-basic"
-            label="Vaccination Id"
-            onChange={handleIdFilterChange}
-            placeholder="6ae207d9-6fa9-4b62..."
-          />
+        <h2>Sort by</h2>
+        <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
+          Date: <Switch onChange={() => setSortByDate(!sortByDate)} />
+          Gender: <Switch onChange={() => setSortByGender(!sortByGender)} />
         </div>
-        <div>
-          <TextField
-            id="standard-basic"
-            label="Bottle Source"
-            onChange={handleBottleFilterChange}
-            placeholder="75ae9638-3ad5-4433..."
-          />
+
+        <h2>Filter by</h2>
+        <div
+          style={{
+            display: "flex",
+            gap: "15px",
+            marginBottom: "20px",
+          }}
+        >
+          <div>
+            <TextField
+              id="standard-basic"
+              label="Vaccination ID"
+              onChange={handleIdFilterChange}
+              placeholder="6ae207d9-6fa9-4b62..."
+            />
+          </div>
+          <div>
+            <TextField
+              id="standard-basic"
+              label="Source Bottle"
+              onChange={handleBottleFilterChange}
+              placeholder="75ae9638-3ad5-4433..."
+            />
+          </div>
         </div>
       </div>
       <TableContainer component={Paper}>
         <Table className={classes.table}>
           <TableHead>
             <TableRow>
+              <TableCell>Vaccination ID</TableCell>
               <TableCell>Source Bottle</TableCell>
               <TableCell align="right">Gender</TableCell>
               <TableCell align="right">Date</TableCell>

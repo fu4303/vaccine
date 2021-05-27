@@ -74,7 +74,9 @@ const Info = ({ vaccines }) => {
         </Paper>
 
         <Paper className="infoBasicContainer" elevation={3}>
-          <h3 style={{ marginBottom: "20px" }}>Vaccinations Stats</h3>
+          <h3 style={{ marginBottom: "20px", textAlign: "center" }}>
+            Vaccinations Stats
+          </h3>
         </Paper>
 
         <Paper className="infoGraphContainer" elevation={3}>
@@ -104,9 +106,21 @@ const Info = ({ vaccines }) => {
           How many vaccines are left to use?
         </Paper>
 
-        <Paper className="infoBasicContainer" elevation={3}>
+        <Paper
+          className="infoBasicContainer"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "15px",
+          }}
+          elevation={3}
+        >
           <h3>RAW Data</h3> <h3>@</h3>{" "}
-          <Link href="https://github.com/solita/vaccine-exercise-2021/tree/master/resources">
+          <Link
+            href="https://github.com/solita/vaccine-exercise-2021/tree/master/resources"
+            style={{ fontSize: "2rem" }}
+          >
             GitHub
           </Link>
         </Paper>

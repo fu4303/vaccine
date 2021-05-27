@@ -136,37 +136,46 @@ const VaccineListPagination = ({ rows, vaccinations }) => {
 
   return (
     <>
-      <h2>Sort by</h2>
-      <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-        Date: <Switch onChange={() => setSortByDate(!sortByDate)} />
-        Vaccine: <Switch onChange={() => setSortByVaccine(!sortByVaccine)} />
-        Area: <Switch onChange={() => setSortByArea(!sortByArea)} />
-      </div>
-      <h2>Filter by</h2>
-      <div style={{ display: "flex", gap: "15px", marginBottom: "20px" }}>
-        <div>
-          <TextField
-            id="standard-basic"
-            label="Name"
-            onChange={handleNameFilterChange}
-            placeholder="Jukka..."
-          />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
+        <h2>Sort by</h2>
+        <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
+          Date: <Switch onChange={() => setSortByDate(!sortByDate)} />
+          Vaccine: <Switch onChange={() => setSortByVaccine(!sortByVaccine)} />
+          Area: <Switch onChange={() => setSortByArea(!sortByArea)} />
         </div>
-        <div>
-          <TextField
-            id="standard-basic"
-            label="Area"
-            onChange={handleAreaFilterChange}
-            placeholder="HYKS..."
-          />
-        </div>
-        <div>
-          <TextField
-            id="standard-basic"
-            label="Vaccine Type"
-            onChange={handleTypeFilterChange}
-            placeholder="Antiqua..."
-          />
+        <h2>Filter by</h2>
+        <div style={{ display: "flex", gap: "15px", marginBottom: "20px" }}>
+          <div>
+            <TextField
+              id="standard-basic"
+              label="Name"
+              onChange={handleNameFilterChange}
+              placeholder="Jukka..."
+            />
+          </div>
+          <div>
+            <TextField
+              id="standard-basic"
+              label="Area"
+              onChange={handleAreaFilterChange}
+              placeholder="HYKS..."
+            />
+          </div>
+          <div>
+            <TextField
+              id="standard-basic"
+              label="Vaccine Type"
+              onChange={handleTypeFilterChange}
+              placeholder="Antiqua..."
+            />
+          </div>
         </div>
       </div>
       <TableContainer component={Paper}>
@@ -174,6 +183,7 @@ const VaccineListPagination = ({ rows, vaccinations }) => {
           <TableHead>
             <TableRow>
               <TableCell className={classes.cell}>Order Number</TableCell>
+              <TableCell className={classes.cell}>ID</TableCell>
               <TableCell className={classes.cell}>Responsible Person</TableCell>
               <TableCell className={classes.cell}>Area</TableCell>
               <TableCell className={classes.cell}>Type</TableCell>

@@ -1,5 +1,6 @@
+/* eslint-disable indent */
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route, useRouteMatch } from "react-router-dom";
 import Menu from "./components/Menu";
 import About from "./components/About";
 import VaccineList from "./components/VaccineList";
@@ -11,6 +12,8 @@ import Antiqua from "./components/Antiqua";
 import Zerpfy from "./components/Zerpfy";
 import vaccineService from "./services/vaccine";
 import vaccinationService from "./services/vaccination";
+import CurrentVaccine from "./components/CurrentVaccine";
+import CurrentVaccination from "./components/CurrentVaccination";
 
 const App = () => {
   const [vaccines, setVaccines] = useState([]);
@@ -65,50 +68,59 @@ const App = () => {
     },
   ];
 
+  const match = useRouteMatch("/vaccines/:id");
+  const vaccine = match
+    ? vaccines.find((vaccine) => vaccine.id === match.params.id)
+    : null;
+
+  const matchVaccination = useRouteMatch("/vaccinations/:id");
+  const vaccination = matchVaccination
+    ? vaccinations.find(
+        (vaccination) =>
+          vaccination["vaccination-id"] === matchVaccination.params.id
+      )
+    : null;
+
   return (
-    <Router>
-      <div>
-        <Menu />
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/solar">
-            <Solar
-              vaccines={vaccines}
-              data={data}
-              vaccinations={vaccinations}
-            />
-          </Route>
-          <Route path="/antiqua">
-            <Antiqua
-              vaccines={vaccines}
-              data={data}
-              vaccinations={vaccinations}
-            />
-          </Route>
-          <Route path="/zerpfy">
-            <Zerpfy
-              vaccines={vaccines}
-              data={data}
-              vaccinations={vaccinations}
-            />
-          </Route>
-          <Route path="/vaccinelist">
-            <VaccineList vaccines={vaccines} vaccinations={vaccinations} />
-          </Route>
-          <Route path="/vaccinationlist">
-            <VaccinationList vaccinations={vaccinations} vaccines={vaccines} />
-          </Route>
-          <Route path="/graphs">
-            <Graphs vaccines={vaccines} data={data} />
-          </Route>
-          <Route path="/">
-            <Info vaccines={vaccines} />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <div>
+      <Menu />
+      <Switch>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/solar">
+          <Solar vaccines={vaccines} data={data} vaccinations={vaccinations} />
+        </Route>
+        <Route path="/antiqua">
+          <Antiqua
+            vaccines={vaccines}
+            data={data}
+            vaccinations={vaccinations}
+          />
+        </Route>
+        <Route path="/zerpfy">
+          <Zerpfy vaccines={vaccines} data={data} vaccinations={vaccinations} />
+        </Route>
+        <Route path="/vaccines/:id">
+          <CurrentVaccine vaccine={vaccine} />
+        </Route>
+        <Route path="/vaccinations/:id">
+          <CurrentVaccination vaccination={vaccination} vaccines={vaccines} />
+        </Route>
+        <Route path="/vaccinelist">
+          <VaccineList vaccines={vaccines} vaccinations={vaccinations} />
+        </Route>
+        <Route path="/vaccinationlist">
+          <VaccinationList vaccinations={vaccinations} vaccines={vaccines} />
+        </Route>
+        <Route path="/graphs">
+          <Graphs vaccines={vaccines} data={data} />
+        </Route>
+        <Route path="/">
+          <Info vaccines={vaccines} />
+        </Route>
+      </Switch>
+    </div>
   );
 };
 

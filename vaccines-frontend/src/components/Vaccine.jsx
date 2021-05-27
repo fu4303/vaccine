@@ -2,6 +2,7 @@
 import React from "react";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
+import { Link } from "react-router-dom";
 
 const Vaccine = ({ vaccine, vaccinations }) => {
   const vaccination = vaccinations.filter(
@@ -11,6 +12,9 @@ const Vaccine = ({ vaccine, vaccinations }) => {
   return (
     <TableRow key={vaccine.orderNumber}>
       <TableCell>{vaccine.orderNumber}</TableCell>
+      <TableCell>
+        <Link to={`/vaccines/${vaccine.id}`}>{vaccine.id}</Link>
+      </TableCell>
       <TableCell>{vaccine.responsiblePerson}</TableCell>
       <TableCell>{vaccine.healthCareDistrict}</TableCell>
       <TableCell
