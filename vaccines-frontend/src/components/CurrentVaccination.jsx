@@ -1,5 +1,10 @@
 /* eslint-disable indent */
 import React from "react";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Divider from "@material-ui/core/Divider";
+import Paper from "@material-ui/core/Paper";
 
 const CurrentVaccination = ({ vaccination, vaccines }) => {
   if (!vaccination) {
@@ -11,19 +16,50 @@ const CurrentVaccination = ({ vaccination, vaccines }) => {
   return (
     <div
       style={{
-        margin: "20px 0 0 20px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: "5%",
       }}
     >
-      <p>ID: {vaccination["vaccination-id"]}</p>
-      <p>Source bottle: {vaccination.sourceBottle}</p>
-      <p>Gender: {vaccination.gender}</p>
-      <p>
-        Vaccination date:{" "}
-        {new Date(vaccination.vaccinationDate).toLocaleString()}
-      </p>
-      <p>Type: {vaccine[0].vaccine} </p>
-      <p>Responsible person: {vaccine[0].responsiblePerson}</p>
-      <p>Area: {vaccine[0].healthCareDistrict}</p>
+      <Paper elevation={3} style={{ maxWidth: "40%" }}>
+        <List>
+          <ListItem>
+            <ListItemText primary={`ID: ${vaccination["vaccination-id"]}`} />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText
+              primary={`Source bottle: ${vaccination.sourceBottle}`}
+            />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText primary={`Gender: ${vaccination.gender}`} />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText
+              primary={`Vaccination date:
+        ${new Date(vaccination.vaccinationDate).toLocaleString()}`}
+            />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText primary={`Type: ${vaccine[0].vaccine}`} />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText
+              primary={`Responsible person: ${vaccine[0].responsiblePerson}`}
+            />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText primary={`Area: ${vaccine[0].healthCareDistrict}`} />
+          </ListItem>
+        </List>
+      </Paper>
     </div>
   );
 };

@@ -1,4 +1,9 @@
 import React from "react";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Divider from "@material-ui/core/Divider";
+import Paper from "@material-ui/core/Paper";
 
 const CurrentVaccine = ({ vaccine }) => {
   if (!vaccine) {
@@ -7,16 +12,47 @@ const CurrentVaccine = ({ vaccine }) => {
   return (
     <div
       style={{
-        margin: "20px 0 0 20px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: "5%",
       }}
     >
-      <p>Order number: {vaccine.orderNumber}</p>
-      <p>ID: {vaccine.id}</p>
-      <p>Responsible person: {vaccine.responsiblePerson}</p>
-      <p>Area: {vaccine.healthCareDistrict}</p>
-      <p>Type: {vaccine.vaccine}</p>
-      <p>Injections total: {vaccine.injections}</p>
-      <p>Arrived: {new Date(vaccine.arrived).toLocaleString()}</p>
+      <Paper elevation={3} style={{ maxWidth: "50%" }}>
+        <List>
+          <ListItem>
+            <ListItemText primary={`Order number: ${vaccine.orderNumber}`} />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText primary={`ID: ${vaccine.id}`} />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText
+              primary={`Responsible person: ${vaccine.responsiblePerson}`}
+            />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText primary={`Area: ${vaccine.healthCareDistrict}`} />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText primary={`Type: ${vaccine.vaccine}`} />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText primary={`Injections: ${vaccine.injections}`} />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText
+              primary={`Arrived: ${new Date(vaccine.arrived).toLocaleString()}`}
+            />
+          </ListItem>
+        </List>
+      </Paper>
     </div>
   );
 };
