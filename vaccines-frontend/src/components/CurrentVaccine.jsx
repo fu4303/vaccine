@@ -4,8 +4,16 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
+import { useHistory } from "react-router-dom";
 
 const CurrentVaccine = ({ vaccine }) => {
+  const history = useHistory();
+
+  const routeChange = () => {
+    history.goBack();
+  };
+
   if (!vaccine) {
     return null;
   }
@@ -13,9 +21,11 @@ const CurrentVaccine = ({ vaccine }) => {
     <div
       style={{
         display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: "5%",
+        gap: "20px",
+        marginTop: "3%",
       }}
     >
       <Paper elevation={3} style={{ maxWidth: "50%" }}>
@@ -53,6 +63,9 @@ const CurrentVaccine = ({ vaccine }) => {
           </ListItem>
         </List>
       </Paper>
+      <Button variant="contained" color="secondary" onClick={routeChange}>
+        Go Back
+      </Button>
     </div>
   );
 };
