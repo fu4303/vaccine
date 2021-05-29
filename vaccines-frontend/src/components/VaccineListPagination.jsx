@@ -21,6 +21,7 @@ import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import LastPageIcon from "@material-ui/icons/LastPage";
 import SortByAlphaIcon from "@material-ui/icons/SortByAlpha";
 import FilterListIcon from "@material-ui/icons/FilterList";
+import PropTypes from "prop-types";
 import Vaccine from "./Vaccine";
 
 const useStyles1 = makeStyles((theme) => ({
@@ -162,7 +163,6 @@ const VaccineListPagination = ({ rows, vaccinations }) => {
         <div style={{ display: "flex", gap: "15px", marginBottom: "20px" }}>
           <div>
             <TextField
-              id="standard-basic"
               label="Name"
               onChange={handleNameFilterChange}
               placeholder="Jukka..."
@@ -170,7 +170,6 @@ const VaccineListPagination = ({ rows, vaccinations }) => {
           </div>
           <div>
             <TextField
-              id="standard-basic"
               label="Area"
               onChange={handleAreaFilterChange}
               placeholder="HYKS..."
@@ -178,7 +177,6 @@ const VaccineListPagination = ({ rows, vaccinations }) => {
           </div>
           <div>
             <TextField
-              id="standard-basic"
               label="Vaccine Type"
               onChange={handleTypeFilterChange}
               placeholder="Antiqua..."
@@ -256,7 +254,7 @@ const VaccineListPagination = ({ rows, vaccinations }) => {
                   500,
                   { label: "All", value: -1 },
                 ]}
-                colSpan={3}
+                colSpan={5}
                 count={rows.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
@@ -274,6 +272,11 @@ const VaccineListPagination = ({ rows, vaccinations }) => {
       </TableContainer>
     </>
   );
+};
+
+VaccineListPagination.propTypes = {
+  rows: PropTypes.array.isRequired,
+  vaccinations: PropTypes.array.isRequired,
 };
 
 export default VaccineListPagination;

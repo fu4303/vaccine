@@ -3,6 +3,7 @@ import { Link as RouterLink } from "react-router-dom";
 import Link from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
+import PropTypes from "prop-types";
 import graph from "../images/graph.webp";
 import stats from "../images/stats.svg";
 
@@ -130,6 +131,10 @@ const Info = ({ vaccines }) => {
       </div>
     </div>
   );
+};
+
+Info.propTypes = {
+  vaccines: PropTypes.array.isRequired,
 };
 
 export default Info;

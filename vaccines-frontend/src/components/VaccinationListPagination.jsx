@@ -21,6 +21,7 @@ import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import LastPageIcon from "@material-ui/icons/LastPage";
 import SortByAlphaIcon from "@material-ui/icons/SortByAlpha";
 import FilterListIcon from "@material-ui/icons/FilterList";
+import PropTypes from "prop-types";
 import Vaccination from "./Vaccination";
 
 const useStyles1 = makeStyles((theme) => ({
@@ -160,7 +161,6 @@ const VaccinationListPagination = ({ rows, vaccines }) => {
         >
           <div>
             <TextField
-              id="standard-basic"
               label="Vaccination ID"
               onChange={handleIdFilterChange}
               placeholder="6ae207d9-6fa9-4b62..."
@@ -168,7 +168,6 @@ const VaccinationListPagination = ({ rows, vaccines }) => {
           </div>
           <div>
             <TextField
-              id="standard-basic"
               label="Source Bottle"
               onChange={handleBottleFilterChange}
               placeholder="75ae9638-3ad5-4433..."
@@ -231,7 +230,7 @@ const VaccinationListPagination = ({ rows, vaccines }) => {
                   500,
                   { label: "All", value: -1 },
                 ]}
-                colSpan={3}
+                colSpan={4}
                 count={rows.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
@@ -249,6 +248,11 @@ const VaccinationListPagination = ({ rows, vaccines }) => {
       </TableContainer>
     </>
   );
+};
+
+VaccinationListPagination.propTypes = {
+  vaccines: PropTypes.array.isRequired,
+  rows: PropTypes.array.isRequired,
 };
 
 export default VaccinationListPagination;

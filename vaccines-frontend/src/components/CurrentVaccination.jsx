@@ -8,6 +8,7 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
 import vaccinationPic from "../images/vaccination.svg";
+import PropTypes from "prop-types";
 
 const CurrentVaccination = ({ vaccination, vaccines }) => {
   const history = useHistory();
@@ -76,6 +77,11 @@ const CurrentVaccination = ({ vaccination, vaccines }) => {
       </Button>
     </div>
   );
+};
+
+CurrentVaccination.propTypes = {
+  vaccines: PropTypes.array.isRequired,
+  vaccination: PropTypes.object,
 };
 
 export default CurrentVaccination;

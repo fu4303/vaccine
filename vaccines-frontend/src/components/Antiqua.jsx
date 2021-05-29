@@ -8,6 +8,7 @@ import {
   Bar,
   BarChart,
 } from "recharts";
+import PropTypes from "prop-types";
 
 const Antiqua = ({ vaccines, data, vaccinations }) => {
   const antiqua = vaccines.filter((vaccine) => vaccine.vaccine === "Antiqua");
@@ -40,6 +41,12 @@ const Antiqua = ({ vaccines, data, vaccinations }) => {
       </div>
     </div>
   );
+};
+
+Antiqua.propTypes = {
+  vaccines: PropTypes.array.isRequired,
+  data: PropTypes.array.isRequired,
+  vaccinations: PropTypes.array.isRequired,
 };
 
 export default Antiqua;

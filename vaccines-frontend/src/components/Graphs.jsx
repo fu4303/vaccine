@@ -16,6 +16,7 @@ import {
 } from "recharts";
 import TodayIcon from "@material-ui/icons/Today";
 import MapIcon from "@material-ui/icons/Map";
+import PropTypes from "prop-types";
 
 const Graphs = ({ vaccines, data }) => {
   const COLORS = ["#8884d8", "#82ca9d", "#d84a26"];
@@ -158,6 +159,12 @@ const Graphs = ({ vaccines, data }) => {
       />
     </div>
   );
+};
+
+Graphs.propTypes = {
+  vaccines: PropTypes.array.isRequired,
+  data: PropTypes.array.isRequired,
+  vaccinations: PropTypes.array,
 };
 
 export default Graphs;

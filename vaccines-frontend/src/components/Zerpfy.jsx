@@ -8,6 +8,7 @@ import {
   Bar,
   BarChart,
 } from "recharts";
+import PropTypes from "prop-types";
 
 const Zerpfy = ({ vaccines, data, vaccinations }) => {
   const zerpfy = vaccines.filter((vaccine) => vaccine.vaccine === "Zerpfy");
@@ -40,6 +41,12 @@ const Zerpfy = ({ vaccines, data, vaccinations }) => {
       </div>
     </div>
   );
+};
+
+Zerpfy.propTypes = {
+  vaccines: PropTypes.array.isRequired,
+  data: PropTypes.array.isRequired,
+  vaccinations: PropTypes.array.isRequired,
 };
 
 export default Zerpfy;

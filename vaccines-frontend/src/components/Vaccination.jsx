@@ -3,6 +3,7 @@ import React from "react";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const Vaccination = ({ vaccination, vaccines }) => {
   const vaccine = vaccines.filter(
@@ -38,4 +39,10 @@ const Vaccination = ({ vaccination, vaccines }) => {
     </TableRow>
   );
 };
+
+Vaccination.propTypes = {
+  vaccines: PropTypes.array.isRequired,
+  vaccination: PropTypes.object.isRequired,
+};
+
 export default Vaccination;

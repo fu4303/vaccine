@@ -7,6 +7,7 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
 import vaccinePic from "../images/vaccine.svg";
+import PropTypes from "prop-types";
 
 const CurrentVaccine = ({ vaccine }) => {
   const history = useHistory();
@@ -69,6 +70,10 @@ const CurrentVaccine = ({ vaccine }) => {
       </Button>
     </div>
   );
+};
+
+CurrentVaccine.propTypes = {
+  vaccine: PropTypes.object,
 };
 
 export default CurrentVaccine;
