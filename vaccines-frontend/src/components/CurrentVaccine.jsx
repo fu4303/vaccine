@@ -6,6 +6,7 @@ import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
+import vaccinePic from "../images/vaccine.svg";
 
 const CurrentVaccine = ({ vaccine }) => {
   const history = useHistory();
@@ -25,9 +26,9 @@ const CurrentVaccine = ({ vaccine }) => {
         justifyContent: "center",
         alignItems: "center",
         gap: "20px",
-        marginTop: "3%",
       }}
     >
+      <img src={vaccinePic} height="150" />
       <Paper elevation={3} style={{ maxWidth: "50%" }}>
         <List>
           <ListItem>

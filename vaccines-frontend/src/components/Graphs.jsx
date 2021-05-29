@@ -14,6 +14,8 @@ import {
   Cell,
   Treemap,
 } from "recharts";
+import TodayIcon from "@material-ui/icons/Today";
+import MapIcon from "@material-ui/icons/Map";
 
 const Graphs = ({ vaccines, data }) => {
   const COLORS = ["#8884d8", "#82ca9d", "#d84a26"];
@@ -64,7 +66,10 @@ const Graphs = ({ vaccines, data }) => {
 
   return (
     <div className="graphsContainer">
-      <h2>Vaccine Arrivals by Month</h2>
+      <h2 className="topHeader">
+        <TodayIcon />
+        Vaccine Arrivals by Month
+      </h2>
       <LineChart
         width={730}
         height={250}
@@ -138,7 +143,10 @@ const Graphs = ({ vaccines, data }) => {
         </PieChart>
       </div>
 
-      <h2>Vaccines by Health Districts</h2>
+      <h2 className="topHeader">
+        <MapIcon />
+        Vaccines by Health Districts
+      </h2>
       <Treemap
         width={400}
         height={200}

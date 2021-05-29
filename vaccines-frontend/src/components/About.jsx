@@ -1,14 +1,16 @@
 import React from "react";
 import Link from "@material-ui/core/Link";
+import aboutPic from "../images/about.svg";
 
 const About = () => {
   return (
     <div className="aboutContainer">
-      <h1 className="aboutHeader">About</h1>
-      <h2 className="aboutHeader">
+      <img src={aboutPic} height="150" style={{ marginTop: "20px" }} />
+
+      <h2>
         Live on <Link href="http://">Heroku</Link>
       </h2>
-      <h2 className="aboutHeader">
+      <h2>
         Source Code on{" "}
         <Link href="https://github.com/villivald/vaccine">GitHub</Link>
       </h2>
@@ -16,9 +18,10 @@ const About = () => {
       <h2>Made with:</h2>
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr 1fr",
+          justifyItems: "center",
+          gap: "15px",
         }}
       >
         <p>
@@ -38,6 +41,9 @@ const About = () => {
         </p>
         <p>
           <Link href="https://recharts.org/en-US/">Recharts</Link>
+        </p>
+        <p>
+          <Link href="https://www.drawkit.io/">Drawkit</Link>
         </p>
         <p>
           <Link href="https://heroku.com/">Heroku</Link>

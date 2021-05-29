@@ -4,6 +4,7 @@ import Link from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import graph from "../images/graph.webp";
+import stats from "../images/stats.svg";
 
 const Info = ({ vaccines }) => {
   const solarLength = vaccines.filter(
@@ -18,7 +19,9 @@ const Info = ({ vaccines }) => {
 
   return (
     <div className="infoWrapper">
-      <h1 className="infoHeader">Vaccines Statistics</h1>
+      <h1 className="infoHeader">
+        <img src={stats} height="50" /> Vaccines Statistics
+      </h1>
       <div className="infoGrid">
         <Paper className="infoBasicContainer" elevation={3}>
           <h3 style={{ marginBottom: "20px", textAlign: "center" }}>

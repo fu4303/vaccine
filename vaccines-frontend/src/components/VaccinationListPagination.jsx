@@ -19,6 +19,8 @@ import FirstPageIcon from "@material-ui/icons/FirstPage";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import LastPageIcon from "@material-ui/icons/LastPage";
+import SortByAlphaIcon from "@material-ui/icons/SortByAlpha";
+import FilterListIcon from "@material-ui/icons/FilterList";
 import Vaccination from "./Vaccination";
 
 const useStyles1 = makeStyles((theme) => ({
@@ -136,13 +138,19 @@ const VaccinationListPagination = ({ rows, vaccines }) => {
           flexDirection: "column",
         }}
       >
-        <h2>Sort by</h2>
+        <h2 className="topHeader">
+          <SortByAlphaIcon />
+          Sort by
+        </h2>
         <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
           Date: <Switch onChange={() => setSortByDate(!sortByDate)} />
           Gender: <Switch onChange={() => setSortByGender(!sortByGender)} />
         </div>
 
-        <h2>Filter by</h2>
+        <h2 className="topHeader">
+          <FilterListIcon />
+          Filter by
+        </h2>
         <div
           style={{
             display: "flex",
