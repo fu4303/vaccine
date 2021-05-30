@@ -119,13 +119,28 @@ th.MuiTableCell-root {
   font-weight: bold;
 }
 
-.graphsContainer,
 .aboutContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 20px;
+}
+
+.graphsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 1%;
+  margin-bottom: 2%;
+}
+
+.areaGraphsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0 20px 0;
 }
 
 .infoWrapper {
@@ -174,7 +189,7 @@ th.MuiTableCell-root {
 
 .topHeader {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   gap: 10px;
   margin: 10px 0 10px 0;
