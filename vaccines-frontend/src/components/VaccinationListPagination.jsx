@@ -23,6 +23,7 @@ import SortByAlphaIcon from "@material-ui/icons/SortByAlpha";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import PropTypes from "prop-types";
 import Vaccination from "./Vaccination";
+import vaccinationListPic from "../images/vaccinationList.svg";
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -139,10 +140,21 @@ const VaccinationListPagination = ({ rows, vaccines }) => {
           flexDirection: "column",
         }}
       >
-        <h2 className="topHeader">
-          <SortByAlphaIcon />
-          Sort by
-        </h2>
+        <div
+          style={{
+            display: "flex",
+            gap: "100px",
+            justifyContent: "center",
+            alignItems: "center",
+            marginLeft: "-18%",
+          }}
+        >
+          <img src={vaccinationListPic} height="150" />
+          <h2 className="topHeader">
+            <SortByAlphaIcon />
+            Sort by
+          </h2>
+        </div>
         <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
           Date: <Switch onChange={() => setSortByDate(!sortByDate)} />
           Gender: <Switch onChange={() => setSortByGender(!sortByGender)} />
