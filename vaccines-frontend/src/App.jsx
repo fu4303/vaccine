@@ -117,7 +117,7 @@ const App = () => {
           <Graphs vaccines={vaccines} data={data} />
         </Route>
         <Route path="/">
-          <Info vaccines={vaccines} />
+          <Info vaccines={vaccines} vaccinations={vaccinations} />
         </Route>
       </Switch>
     </div>

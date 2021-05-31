@@ -182,8 +182,8 @@ th.MuiTableCell-root {
 }
 
 .vaccineContainer {
-  border: 1px solid black;
-  box-shadow: 2px 2px crimson;
+  border: 1px solid #1b4f55;
+  box-shadow: 2px 2px #1b4f55;
   padding: 2px;
 }
 
