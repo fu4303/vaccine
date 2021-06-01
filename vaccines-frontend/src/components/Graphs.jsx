@@ -178,7 +178,7 @@ const Graphs = ({ vaccines, data }) => {
             outerRadius={80}
             dataKey="value"
           >
-            {data.map((entry, index) => (
+            {vaccineDataByType.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
                 fill={COLORS[index % COLORS.length]}

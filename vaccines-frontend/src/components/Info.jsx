@@ -6,15 +6,23 @@ import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
 import graph from "../images/graph.webp";
 import stats from "../images/stats.svg";
+import { PieChart, Pie, Cell } from "recharts";
 
 const Info = ({ vaccines, vaccinations }) => {
   const vaccineAmount = (type) =>
     vaccines.filter((vaccine) => vaccine.vaccine === type).length;
 
+  const vaccineArea = (area) =>
+    vaccines.filter((vaccine) => vaccine.healthCareDistrict === area).length;
+
   const vaccinationsByMonth = (month) =>
     vaccinations.filter((vaccination) =>
       vaccination.vaccinationDate.includes(`2021-${month}`)
     ).length;
+
+  const vaccinesByMonth = (month) =>
+    vaccines.filter((vaccine) => vaccine.arrived.includes(`2021-${month}`))
+      .length;
 
   const ids = vaccines.map((vaccine) => vaccine.id);
   const bottles = vaccinations.map((vaccination) => vaccination.sourceBottle);
@@ -32,6 +40,28 @@ const Info = ({ vaccines, vaccinations }) => {
     vaccineAmount("SolarBuddhica") * 6 +
     vaccineAmount("Antiqua") * 4 +
     vaccineAmount("Zerpfy") * 5;
+
+  const vaccineDataByGender = [
+    {
+      name: "Female",
+      value: vaccinations.filter(
+        (vaccination) => vaccination.gender === "female"
+      ).length,
+    },
+    {
+      name: "Male",
+      value: vaccinations.filter((vaccination) => vaccination.gender === "male")
+        .length,
+    },
+    {
+      name: "Nonbinary",
+      value: vaccinations.filter(
+        (vaccination) => vaccination.gender === "nonbinary"
+      ).length,
+    },
+  ];
+
+  const COLORS = ["#8884d8", "#82ca9d", "#d84a26"];
 
   return (
     <div className="infoWrapper">
@@ -207,16 +237,143 @@ const Info = ({ vaccines, vaccinations }) => {
         </Paper>
 
         <Paper className="infoBasicContainer" elevation={3}>
-          How many bottles have expired on the given day (remember a bottle
-          expires 30 days after arrival)
+          <h3 style={{ marginBottom: "20px", textAlign: "center" }}>
+            Vaccines By Area
+          </h3>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "15px",
+            }}
+          >
+            <div className="vaccineContainer" style={{ padding: "9px" }}>
+              HYKS:
+              <p>{vaccineArea("HYKS")}</p>
+              <p>{`${((vaccineArea("HYKS") / vaccines.length) * 100)
+                .toString()
+                .substr(0, 4)}%`}</p>
+            </div>
+            <div className="vaccineContainer" style={{ padding: "9px" }}>
+              KYS:
+              <p>{vaccineArea("KYS")}</p>
+              <p>{`${((vaccineArea("KYS") / vaccines.length) * 100)
+                .toString()
+                .substr(0, 4)}%`}</p>
+            </div>
+            <div className="vaccineContainer" style={{ padding: "9px" }}>
+              TAYS:
+              <p>{vaccineArea("TAYS")}</p>
+              <p>{`${((vaccineArea("TAYS") / vaccines.length) * 100)
+                .toString()
+                .substr(0, 4)}%`}</p>
+            </div>
+            <div className="vaccineContainer" style={{ padding: "9px" }}>
+              TYKS:
+              <p>{vaccineArea("TYKS")}</p>
+              <p>{`${((vaccineArea("TYKS") / vaccines.length) * 100)
+                .toString()
+                .substr(0, 4)}%`}</p>
+            </div>
+            <div className="vaccineContainer" style={{ padding: "9px" }}>
+              OYS:
+              <p>{vaccineArea("OYS")}</p>
+              <p>{`${((vaccineArea("OYS") / vaccines.length) * 100)
+                .toString()
+                .substr(0, 4)}%`}</p>
+            </div>
+          </div>
         </Paper>
 
         <Paper className="infoBasicContainer" elevation={3}>
-          How many vaccines expired before the usage
+          <h3 style={{ marginBottom: "20px", textAlign: "center" }}>
+            Vaccinations By Gender
+          </h3>
+          <div>
+            <p>
+              Female: {vaccineDataByGender[0].value}
+              {" - "}
+              {`${((vaccineDataByGender[0].value / vaccinations.length) * 100)
+                .toString()
+                .substr(0, 4)}%`}
+            </p>
+            <p>
+              Male: {vaccineDataByGender[1].value}
+              {" - "}
+              {`${((vaccineDataByGender[1].value / vaccinations.length) * 100)
+                .toString()
+                .substr(0, 4)}%`}
+            </p>
+            <p>
+              Nonbinary: {vaccineDataByGender[2].value}
+              {" - "}
+              {`${((vaccineDataByGender[2].value / vaccinations.length) * 100)
+                .toString()
+                .substr(0, 4)}%`}
+            </p>
+          </div>
+          <div style={{ margin: "-50px 0 0 -50px" }}>
+            <PieChart width={400} height={400}>
+              <Pie
+                data={vaccineDataByGender}
+                cx="50%"
+                cy="50%"
+                labelLine={true}
+                label={`${vaccineDataByGender.value}`}
+                outerRadius={80}
+                dataKey="value"
+              >
+                {vaccineDataByGender.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                ))}
+              </Pie>
+            </PieChart>
+          </div>
         </Paper>
 
         <Paper className="infoBasicContainer" elevation={3}>
-          How many vaccines are left to use?
+          <h3 style={{ marginBottom: "20px", textAlign: "center" }}>
+            Vaccines Arrivals
+          </h3>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "15px",
+            }}
+          >
+            <div className="vaccineContainer" style={{ padding: "9px" }}>
+              January:
+              <p>{vaccinesByMonth("01")}</p>
+              <p>{`${((vaccinesByMonth("01") / vaccines.length) * 100)
+                .toString()
+                .substr(0, 4)}%`}</p>
+            </div>
+            <div className="vaccineContainer" style={{ padding: "9px" }}>
+              February:
+              <p>{vaccinesByMonth("02")}</p>
+              <p>{`${((vaccinesByMonth("02") / vaccines.length) * 100)
+                .toString()
+                .substr(0, 4)}%`}</p>
+            </div>
+            <div className="vaccineContainer" style={{ padding: "9px" }}>
+              March:
+              <p>{vaccinesByMonth("03")}</p>
+              <p>{`${((vaccinesByMonth("03") / vaccines.length) * 100)
+                .toString()
+                .substr(0, 4)}%`}</p>
+            </div>
+            <div className="vaccineContainer" style={{ padding: "9px" }}>
+              April:
+              <p>{vaccinesByMonth("04")}</p>
+              <p>{`${((vaccinesByMonth("04") / vaccines.length) * 100)
+                .toString()
+                .substr(0, 4)}%`}</p>
+            </div>
+          </div>
         </Paper>
 
         <Paper
