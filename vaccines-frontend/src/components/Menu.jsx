@@ -25,6 +25,7 @@ const Menu = () => {
           activeClassName="active"
           to="/graphs"
           style={{ display: "flex", gap: "5px" }}
+          id="graphsLink"
         >
           <EqualizerIcon />
           Graphs
@@ -35,6 +36,7 @@ const Menu = () => {
           activeClassName="active"
           to="/vaccinelist"
           style={{ display: "flex", gap: "5px" }}
+          id="vaccineListLink"
         >
           <LocalHospitalIcon />
           Vaccine List
@@ -45,6 +47,7 @@ const Menu = () => {
           activeClassName="active"
           to="/vaccinationlist"
           style={{ display: "flex", gap: "5px" }}
+          id="vaccinationListLink"
         >
           <OpacityIcon />
           Vaccination List

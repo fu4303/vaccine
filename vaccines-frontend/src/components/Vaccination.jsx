@@ -12,7 +12,10 @@ const Vaccination = ({ vaccination, vaccines }) => {
   return (
     <TableRow key={vaccination["vaccination-id"]}>
       <TableCell>
-        <Link to={`/vaccinations/${vaccination["vaccination-id"]}`}>
+        <Link
+          id="vaccinationLink"
+          to={`/vaccinations/${vaccination["vaccination-id"]}`}
+        >
           {vaccination["vaccination-id"]}
         </Link>
       </TableCell>

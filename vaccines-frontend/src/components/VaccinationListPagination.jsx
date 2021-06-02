@@ -176,6 +176,7 @@ const VaccinationListPagination = ({ rows, vaccines }) => {
               label="Vaccination ID"
               onChange={handleIdFilterChange}
               placeholder="6ae207d9-6fa9-4b62..."
+              id="filterId"
             />
           </div>
           <div>
@@ -183,6 +184,7 @@ const VaccinationListPagination = ({ rows, vaccines }) => {
               label="Source Bottle"
               onChange={handleBottleFilterChange}
               placeholder="75ae9638-3ad5-4433..."
+              id="filterBottle"
             />
           </div>
         </div>
@@ -203,6 +205,12 @@ const VaccinationListPagination = ({ rows, vaccines }) => {
           <TableBody>
             {(rowsPerPage > 0
               ? rows
+                  .filter((vaccine) =>
+                    vaccine["vaccination-id"].includes(idFilter)
+                  )
+                  .filter((vaccine) =>
+                    vaccine.sourceBottle.includes(bottleFilter)
+                  )
                   .sort((max, min) => max.vaccinationDate - min.vaccinationDate)
                   .sort(
                     (max, min) =>
@@ -215,16 +223,13 @@ const VaccinationListPagination = ({ rows, vaccines }) => {
                   )
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : rows
-            )
-              .filter((vaccine) => vaccine["vaccination-id"].includes(idFilter))
-              .filter((vaccine) => vaccine.sourceBottle.includes(bottleFilter))
-              .map((vaccination) => (
-                <Vaccination
-                  key={vaccination["vaccination-id"]}
-                  vaccination={vaccination}
-                  vaccines={vaccines}
-                />
-              ))}
+            ).map((vaccination) => (
+              <Vaccination
+                key={vaccination["vaccination-id"]}
+                vaccination={vaccination}
+                vaccines={vaccines}
+              />
+            ))}
 
             {emptyRows > 0 && (
               <TableRow style={{ height: 53 * emptyRows }}>

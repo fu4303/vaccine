@@ -14,7 +14,9 @@ const Vaccine = ({ vaccine, vaccinations }) => {
     <TableRow key={vaccine.orderNumber}>
       <TableCell>{vaccine.orderNumber}</TableCell>
       <TableCell>
-        <Link to={`/vaccines/${vaccine.id}`}>{vaccine.id}</Link>
+        <Link id="vaccineLink" to={`/vaccines/${vaccine.id}`}>
+          {vaccine.id}
+        </Link>
       </TableCell>
       <TableCell>{vaccine.responsiblePerson}</TableCell>
       <TableCell>{vaccine.healthCareDistrict}</TableCell>

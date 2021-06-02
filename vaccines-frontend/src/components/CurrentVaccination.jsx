@@ -32,6 +32,7 @@ const CurrentVaccination = ({ vaccination, vaccines }) => {
         alignItems: "center",
         gap: "20px",
       }}
+      className="currentVaccinationContainer"
     >
       <img src={vaccinationPic} height="150" />
       <Paper elevation={3} style={{ maxWidth: "40%" }}>

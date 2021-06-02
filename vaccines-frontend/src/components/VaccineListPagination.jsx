@@ -175,6 +175,7 @@ const VaccineListPagination = ({ rows, vaccinations }) => {
         <div style={{ display: "flex", gap: "15px", marginBottom: "20px" }}>
           <div>
             <TextField
+              id="filterName"
               label="Name"
               onChange={handleNameFilterChange}
               placeholder="Jukka..."
@@ -182,6 +183,7 @@ const VaccineListPagination = ({ rows, vaccinations }) => {
           </div>
           <div>
             <TextField
+              id="filterArea"
               label="Area"
               onChange={handleAreaFilterChange}
               placeholder="HYKS..."
@@ -189,6 +191,7 @@ const VaccineListPagination = ({ rows, vaccinations }) => {
           </div>
           <div>
             <TextField
+              id="filterType"
               label="Vaccine Type"
               onChange={handleTypeFilterChange}
               placeholder="Antiqua..."
@@ -212,6 +215,21 @@ const VaccineListPagination = ({ rows, vaccinations }) => {
           <TableBody>
             {(rowsPerPage > 0
               ? rows
+                  .filter((vaccine) =>
+                    vaccine.responsiblePerson
+                      .toLowerCase()
+                      .includes(nameFilter.toLowerCase())
+                  )
+                  .filter((vaccine) =>
+                    vaccine.healthCareDistrict
+                      .toLowerCase()
+                      .includes(areaFilter.toLowerCase())
+                  )
+                  .filter((vaccine) =>
+                    vaccine.vaccine
+                      .toLowerCase()
+                      .includes(typeFilter.toLowerCase())
+                  )
                   .sort((max, min) =>
                     sortByDate
                       ? new Date(max.arrived).getTime() -
@@ -228,27 +246,13 @@ const VaccineListPagination = ({ rows, vaccinations }) => {
                   )
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : rows
-            )
-              .filter((vaccine) =>
-                vaccine.responsiblePerson
-                  .toLowerCase()
-                  .includes(nameFilter.toLowerCase())
-              )
-              .filter((vaccine) =>
-                vaccine.healthCareDistrict
-                  .toLowerCase()
-                  .includes(areaFilter.toLowerCase())
-              )
-              .filter((vaccine) =>
-                vaccine.vaccine.toLowerCase().includes(typeFilter.toLowerCase())
-              )
-              .map((vaccine) => (
-                <Vaccine
-                  key={vaccine.id}
-                  vaccine={vaccine}
-                  vaccinations={vaccinations}
-                />
-              ))}
+            ).map((vaccine) => (
+              <Vaccine
+                key={vaccine.id}
+                vaccine={vaccine}
+                vaccinations={vaccinations}
+              />
+            ))}
 
             {emptyRows > 0 && (
               <TableRow style={{ height: 53 * emptyRows }}>
