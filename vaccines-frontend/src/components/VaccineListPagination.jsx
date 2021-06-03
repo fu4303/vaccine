@@ -108,6 +108,7 @@ const VaccineListPagination = ({ rows, vaccinations }) => {
   const [nameFilter, setNameFilter] = useState("");
   const [areaFilter, setAreaFilter] = useState("");
   const [typeFilter, setTypeFilter] = useState("");
+  const [numberFilter, setNumberFilter] = useState("");
   const [sortByDate, setSortByDate] = useState(false);
   const [sortByVaccine, setSortByVaccine] = useState(false);
   const [sortByArea, setSortByArea] = useState(false);
@@ -120,6 +121,9 @@ const VaccineListPagination = ({ rows, vaccinations }) => {
   };
   const handleTypeFilterChange = (event) => {
     setTypeFilter(event.target.value);
+  };
+  const handleNumberFilterChange = (event) => {
+    setNumberFilter(event.target.value);
   };
 
   const classes = useStyles2();
@@ -165,7 +169,8 @@ const VaccineListPagination = ({ rows, vaccinations }) => {
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
           Date: <Switch onChange={() => setSortByDate(!sortByDate)} />
-          Vaccine: <Switch onChange={() => setSortByVaccine(!sortByVaccine)} />
+          Vaccine Type:{" "}
+          <Switch onChange={() => setSortByVaccine(!sortByVaccine)} />
           Area: <Switch onChange={() => setSortByArea(!sortByArea)} />
         </div>
         <h2 className="topHeader">
@@ -173,6 +178,14 @@ const VaccineListPagination = ({ rows, vaccinations }) => {
           Filter by
         </h2>
         <div style={{ display: "flex", gap: "15px", marginBottom: "20px" }}>
+          <div>
+            <TextField
+              id="filterNumber"
+              label="ID"
+              onChange={handleNumberFilterChange}
+              placeholder="2145116d-7b2d..."
+            />
+          </div>
           <div>
             <TextField
               id="filterName"
@@ -219,6 +232,11 @@ const VaccineListPagination = ({ rows, vaccinations }) => {
                     vaccine.responsiblePerson
                       .toLowerCase()
                       .includes(nameFilter.toLowerCase())
+                  )
+                  .filter((vaccine) =>
+                    vaccine.id
+                      .toLowerCase()
+                      .includes(numberFilter.toLowerCase())
                   )
                   .filter((vaccine) =>
                     vaccine.healthCareDistrict
