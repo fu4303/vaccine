@@ -9,10 +9,10 @@ git clone git@github.com:villivald/vaccine.git
 
 cd vaccine
 
-cd vaccine-backend
+cd vaccines-backend
 npm start && cd ..
 
-cd vaccine-frontend
+cd vaccines-frontend
 npm run dev
 ```
 
